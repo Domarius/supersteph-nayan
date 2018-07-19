@@ -124,8 +124,7 @@
               
                   <form  name="addStep">
                     <div class="box-body">
-<h3 Style="color:red;" > Note: Please fill out all fields to submit the Form</h3>
-                      <div class="form-group">
+                     <div class="form-group">
                         <label>Where did you hear of SuperSteph?:</label>
                         <input type="text" class="form-control" placeholder="" ng-model="get.hear_supersteph" required>
                       </div>
@@ -211,7 +210,8 @@
                         </p>
                       </div>
                     </div>
-               
+               <h3 Style="color:red;" > Note: Please fill out all fields to submit the Form</h3>
+ 
                     <div class="box-footer">
                       <button type="submit" class="btn btn-success" ng-disabled="addStep.$invalid" ng-click="addGeneralBooking()">Save</button>
                     </div>

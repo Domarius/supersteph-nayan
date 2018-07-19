@@ -34,7 +34,7 @@
 	                    	<div class="col-sm-11">
 	                    		<h3>Compose Email</h3>
 	                    	</div>
-	                    	<div class="col-sm-2"> 
+	                    	<!-- <div class="col-sm-2"> 
 			                	<div class="dropdown">
 							    	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Upcoming Gig
 							    	<span class="caret"></span></button>
@@ -45,12 +45,12 @@
 							      		<li><a href="" ng-click="filterRecords('10')">10 Day</a></li>
 						    		</ul>
 							  	</div>
-			                </div>
+			                </div> -->
 	                    	<div class="col-sm-4"> 
 	                    	<a href="<?php echo base_url() ?>welcome/editemailTemplate/?24" class="btn btn-success"> Edit Template </a>
-	                  
-	                      		<button type="button" class="btn btn-primary" ng-if="delete_count > 0" ng-click="assignEmail();">Send</button>
-	                      		<button type="button" class="btn btn-primary" ng-if="delete_count > 0" ng-click="ignoreEmail();">Ignore</button>
+	                  <!--  ng-if="delete_count > 0" -->
+	                      		<button type="button" class="btn btn-primary"  ng-disabled="addStep.$invalid" ng-click="assignEmail();">Send</button>
+	                      		<button type="button" class="btn btn-primary"  ng-disabled="addStep.$invalid"  ng-click="ignoreEmail();">Ignore</button>
 	                      		
 	                    	</div>
 	                  	</div>
@@ -105,7 +105,7 @@
 	                        		<tbody>
 	                          			<tr ng-repeat="list in listing">
 				                            <td>
-				                              <input type="checkbox" ng-click="selectCheck(list.id, false)" data-ng-checked="SelectID.indexOf(list.id) > -1" style="opacity: 1 !important;">
+				                              <input type="checkbox" ng-click="selectCheck(list.id, false)" data-ng-checked="SelectID.indexOf(list.id) > -1" style="opacity: 1 !important;" required>
 				                            </td>
 				                            <!-- <td>{{$index+1}}</td> -->
 				                            <td>{{list.name}}</td>

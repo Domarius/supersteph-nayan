@@ -103,6 +103,7 @@
 <th>Role</th>
 <th>Performer Start Time</th>
 <th>Performer Duration</th>
+<!-- <th>Email</th> -->
 <th>Action</th>
 </tr>
  </thead>
@@ -128,15 +129,19 @@
 <td><select ng-model="list.duration">
                         <option ng-repeat="x in durationListing" value="{{x.value}}">{{x.label}}</option>
                       </select></td>
+<!-- <td>
+<input type="checkbox" name="list.confirmemail" ng-model="list.confirmemail" ng-checked="true" > Send Email
+</td> -->
 <td><a href="<?php echo base_url() ?>welcome/cancelPerformer/?id={{list.assign_id}}&parameter={{parameters.page}}&booking={{list.booking_id}}" onclick="return confirm('Are you sure you would like to remove this performer ?');"><span class="btn btn-sm btn-info">Remove</span></a> 
-<!--a href="<?php echo base_url() ?>welcome/editAssignPerformer/?{{list.assign_id}}/?{{parameters.page}}" ><span class="btn btn-sm btn-info">Edit</span></a--><span class="btn btn-sm btn-info" ng-click="editAssignPerformer(list)">Save And Email</span
+<!--a href="<?php echo base_url() ?>welcome/editAssignPerformer/?{{list.assign_id}}/?{{parameters.page}}" ><span class="btn btn-sm btn-info">Edit</span></a--><span class="btn btn-sm btn-info" ng-click="editAssignPerformer(list)">Save</span>
+<span class="btn btn-sm btn-info" ng-click="emailAssignPerformer(list)">Email</span>
  </td>
 </tr>
 </tbody>
-</table>
+</table> 
 </div>
 </div>
-</div>
+</div>  
 </div>
 </div>
 

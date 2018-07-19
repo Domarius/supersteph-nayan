@@ -83,6 +83,26 @@ app.controller("ChasingPaperworkController", function($scope, $http, toaster, $l
     };
 
 	
+// Ignore Clients
+$scope.ignoreassignEmail = function(){
+		if(confirm("Do you want to Ignore clients?")){
+			$scope.get.booking_id= $scope.SelectID;
+			$http.post('ignorePaperworkEmail', $scope.get).success(function(data){
+				$scope.result = data;
+				//if(data.status == 0){
+					toaster.pop("success", data.message, "");
+					$scope.delete_count = 0;
+					$window.location.href = base_url+'welcome/chasingPaperwork';
+				}
+				// else{
+				// 	toaster.pop("error", data.message, "");
+				// }
+			});
+		}
+    };
+
+
+// Ignore Clients 
     function update(total){
     	
 		$scope.total=total;

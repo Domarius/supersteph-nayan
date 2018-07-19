@@ -45,7 +45,7 @@ app.controller("addBookingRequestController", function($scope, $http, toaster, $
 				$scope.get = "";
 				toaster.pop("success", data.message, "");
 				$timeout(function() {  
-                  	$window.location.href = base_url+'welcome/bookingRequest';  
+                  	$window.location.href = base_url+'welcome/bookingRequest/'+$scope.get.booking_id;  
                 }, 900);  
 			}
 			else{

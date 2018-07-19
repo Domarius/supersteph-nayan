@@ -92,10 +92,28 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 			$scope.listing=data;
 			if(data.status == 0){
 				toaster.pop("success", data.message, "");
-				$timeout(function() {  
-                  	//$window.location.href = base_url+'welcome/editBookAssignPerformer/?'+$scope.get.booking_id+'/?'+page_id;  
-                		$window.location.href = base_url+'welcome/editbookingRequest/?'+$scope.get.booking_id+'/?'+page_id;
-                }, 900);  
+				// $timeout(function() {  
+    //               	//$window.location.href = base_url+'welcome/editBookAssignPerformer/?'+$scope.get.booking_id+'/?'+page_id;  
+    //             		$window.location.href = base_url+'welcome/editBookAssignPerformer/?'+$scope.get.booking_id+'/?'+page_id;
+    //             }, 900);  
+			}
+			else{
+				toaster.pop("error", data.message, "");
+			}
+		});
+	}
+
+	$scope.emailAssignPerformer = function(list){
+		$scope.get = list;
+		console.log($scope.get); 
+		$http.post('../emailEditAssignPerformer', $scope.get).success(function(data){
+			$scope.listing=data;
+			if(data.status == 0){
+				toaster.pop("success", data.message, "");
+				// $timeout(function() {  
+    //               	//$window.location.href = base_url+'welcome/editBookAssignPerformer/?'+$scope.get.booking_id+'/?'+page_id;  
+    //             		$window.location.href = base_url+'welcome/editBookAssignPerformer/?'+$scope.get.booking_id+'/?'+page_id;
+    //             }, 900);  
 			}
 			else{
 				toaster.pop("error", data.message, "");
@@ -113,9 +131,9 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 					$scope.result = data;
 					if(data.status == 0){
 						toaster.pop("success", data.message, "");
-						$timeout(function() {  
-		                  	$window.location.href = base_url+'welcome/editbookingRequest/?'+id+'/?'+page_id; 
-		                }, 900); 
+						// $timeout(function() {  
+		    //               	$window.location.href = base_url+'welcome/editbookingRequest/?'+id+'/?'+page_id; 
+		    //             }, 900); 
 					}
 					else{
 						toaster.pop("error", data.message, "");

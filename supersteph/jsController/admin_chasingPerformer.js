@@ -78,6 +78,33 @@ app.controller("ChasingPerformerController", function($scope, $http, toaster, $l
 			});
 		}
     };
+// Ignore the performers from email
+
+$scope.ignoreassignEmail = function(){
+		if(confirm("Do you want to Ignore?")){
+			$scope.get.assign_id= $scope.SelectID;
+			$http.post('sendPerformerEmail', $scope.get).success(function(data){
+				$scope.result = data;
+				if(data.status == 0){
+					toaster.pop("success", "Mail sent successfully", "");
+					//toaster.pop("success", data.message, "");
+					$scope.delete_count = 0;
+					$window.location.href = base_url+'welcome/chasingPerformer';
+				}
+				else{
+					//alert(data.message+'Okay');
+					//toaster.pop("error", data.message, "");
+					toaster.pop("success", "Mail sent successfully", "");
+					$window.location.href = base_url+'welcome/chasingPerformer';
+				}
+			});
+		}
+    };
+
+
+    // Ignoe performer from email 
+
+
 
 	
     function update(total){

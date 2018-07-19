@@ -80,7 +80,7 @@
 
                         <button type="submit" ng-disabled="isDisabled" ng-model="isDisabled" class="btn btn-success" ng-click="editBookingRequest(); disableClick();"  id="btn1" >Save</button>
                          <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal" ng-click="BookingID(get.id)">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                            <i class="fa fa-trash-o" aria-hidden="true"></i> Cancel
                           </a>
 
                         <div style="margin-bottom: 5px;" ng-if="list.booking_status == 'Cancelled'">

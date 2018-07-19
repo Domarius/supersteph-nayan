@@ -34,7 +34,7 @@
 	                    	<div class="col-sm-11">
 	                    		<h3>Compose Email</h3>
 	                    	</div>
-	                    	<div class="col-sm-2"> 
+	                    	<!-- <div class="col-sm-2"> 
 			                	<div class="dropdown">
 							    	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Upcoming Gig
 							    	<span class="caret"></span></button>
@@ -45,11 +45,12 @@
 							      		<li><a href="" ng-click="filterRecords('10')">10 Day</a></li>
 						    		</ul>
 							  	</div>
-			                </div>
+			                </div> -->
 	                    	<div class="col-sm-3"> 
 	                    	 <a href="<?php echo base_url() ?>welcome/editemailTemplate/?14" class="btn btn-success"> Edit Template </a>
-	                  
-	                      		<button type="button" class="btn btn-primary" ng-if="delete_count > 0" ng-click="assignEmail();">Send</button>
+	                  <!-- ng-if="delete_count > 0" -->
+	                      		<button type="button" class="btn btn-primary"  ng-click="assignEmail();">Send</button>
+	                      		<button type="button" class="btn btn-primary" ng-click="ignoreassignEmail();">Ignore</button>
 	                      		
 	                    	</div>
 	                  	</div>
