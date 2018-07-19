@@ -95,7 +95,7 @@ $scope.ignoreassignEmail = function(){
 					//alert(data.message+'Okay');
 					//toaster.pop("error", data.message, "");
 					toaster.pop("success", "Mail sent successfully", "");
-					$window.location.href = base_url+'welcome/chasingPerformer';
+					//$window.location.href = base_url+'welcome/chasingPerformer';
 				}
 			});
 		}

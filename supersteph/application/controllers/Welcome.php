@@ -2450,7 +2450,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 			          	$assign_date = !empty($assign_list['assign_date']) ? $assign_list['assign_date'] : "";
 			          	$assign_start_datetime = !empty($assign_list['assign_start_datetime']) ? $assign_list['assign_start_datetime'] : "";
 			          	$duration = !empty($assign_list['duration']) ? $assign_list['duration'] : "";
-			          	
+			          	$assign_start_datetime = !empty($assign_start_datetime) ? date('g:i A', strtotime($assign_start_datetime)) : "";
+	    	
 			          	$booking_details = $this->db->query("SELECT * FROM booking_request where id='$booking';")->result_array();
 			          	$host = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 						$email = !empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
@@ -3022,8 +3023,10 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 						$child_name = !empty($booking_details[0]['child_name']) ? $booking_details[0]['child_name'] : "";
 						//$fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 						$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-						$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-
+						//$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
+						
+	    				$show_time = date('g:i A', strtotime($performer_list['start_time']));
+					
 			    		
 						$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='ADMIN_ASSIGN_PERFORMER' ")->result_array();
 
@@ -3683,7 +3686,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
     		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
     		$categoryID = !empty($assign_details[0]['role']) ? $assign_details[0]['role'] : "";
 
@@ -3774,16 +3777,16 @@ if(!empty($confirmemail)){
 					$start_datetime = $event_date.' '.$assign_start_datetime;
 
 					if($duration == '1'){
-						$assign_end_datetime = date('H:i:s', strtotime($start_datetime) + 60*60);
+						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60);
 			    	}
 			    	else if($duration == '1.5'){
-						$assign_end_datetime = date('H:i:s', strtotime($start_datetime) + 60*60*1.5);
+						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*1.5);
 			    	}
 			    	else if($duration == '2'){
-						$assign_end_datetime = date('H:i:s', strtotime($start_datetime) + 60*60*2);
+						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*2);
 			    	}
 			    	else if($duration == '2.5'){
-						$assign_end_datetime = date('H:i:s', strtotime($start_datetime) + 60*60*2.5);
+						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*2.5);
 			    	}
 			    	else{
 			    		$assign_end_datetime = "";
@@ -3818,6 +3821,7 @@ if(!empty($confirmemail)){
     		$assign_details = $this->db->query("SELECT * FROM assign_booking where id='$id'")->result_array();
 			$booking_request_id = !empty($assign_details[0]['booking_request_id']) ? $assign_details[0]['booking_request_id'] : "";
 			$performer_id = !empty($assign_details[0]['performer_id']) ? $assign_details[0]['performer_id'] : "";
+			$start_datetime = !empty($assign_details[0]['start_datetime']) ? $assign_details[0]['start_datetime'] : "";
 
 
 			$booking_details = $this->db->query("SELECT * FROM booking_request where id='$booking_request_id' ")->result_array();
@@ -3831,7 +3835,8 @@ if(!empty($confirmemail)){
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
     		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	$showTimes = !empty($assign_details[0]['start_datetime']) ? date('g:i A', strtotime($assign_details[0]['start_datetime'])) : "";
 	    		
     		$categoryID = !empty($assign_details[0]['role']) ? $assign_details[0]['role'] : "";
 
@@ -3857,7 +3862,7 @@ if(!empty($confirmemail)){
 	        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 	        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 	        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
-	        $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $showTime, 'SHOW_START_TIME' => $showTime, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
+	        $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $showTimes, 'SHOW_START_TIME' => $showTimes, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
 	        //$data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $start_time, 'SHOW_END_TIME' => $end_time,'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $showType);
 	        if(!empty($data)){
 	        	foreach($data as $key => $value){
@@ -4870,7 +4875,7 @@ if(!empty($confirmemail)){
 				'show_fullname'=> $show_fullname,
 				//'booking_status'=> 'Pending',
 				'paperwork_count'=> '1',
-				'looking_count'=> '1',
+				'looking_count'=> '0',
 				'updated_on'=> date("Y-m-d H:i:s")
 			);
 
@@ -5990,7 +5995,7 @@ if(!empty($confirmemail)){
 	    }
   	}
 
-  	public function sendPaperworkEmail(){
+  public function sendPaperworkEmail(){
 
 	    $this->checkLogin();  
 	   
@@ -6081,7 +6086,7 @@ if(!empty($booking_details)){
 		        	echo json_encode(array('status'=>1, 'type'=>'success', "message" => "Email Sent successfully!")); die;
 		      	}
 		      	else{
-		        	echo json_encode(array('status'=>0, 'type'=>'error', "message" => "Email Sending Failed")); die;
+		        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Email Sending Failed")); die;
 		      	}
   		//echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Email Sent successfully!")); die;
   	}
@@ -6681,7 +6686,7 @@ if(!empty($booking_details)){
 	    		}
 
 		      	if(!empty($count)){
-		        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Email Sent successfully!$booking_request_id,$id")); die;
+		        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Performer ignored successfully!")); die;
 		      	}
 		      	else{ //"Email Sending Failed!"$performer_id.$booking_id
 		        	echo json_encode(array('status'=>1, 'type'=>'error', "message" =>"Email Sending Failed!" )); die;
@@ -9600,7 +9605,7 @@ public function downloadWord($id = NULL){
 
 	    
 
-	    $booking_details = $this->db->query("SELECT * FROM booking_request where id='$id' ")->result_array();
+	    $booking_details = $this->db->query("SELECT * FROM booking_request where id='$id' and booking_status='Ready Print'")->result_array();
 
 
 // Get Performer Details .
@@ -9661,7 +9666,7 @@ $performer_message = "";
     	$party_in_out = !empty($booking_details[0]['party_in_out']) ? $booking_details[0]['party_in_out'] : "";
     	$rain_plan = !empty($booking_details[0]['rain_plan']) ? $booking_details[0]['rain_plan'] : "";
     	$age = !empty($booking_details[0]['age']) ? $booking_details[0]['age'] : "";
-    	$parking = !empty($booking_details[0]['parking']) ? $booking_details[0]['parking'] : "";
+    	$parking = !empty($booking_details[0]['parking_facility']) ? $booking_details[0]['parking_facility'] : "";
 
     	$dob = !empty($booking_details[0]['dob']) ? $booking_details[0]['dob'] : "";
     	$children_count = !empty($booking_details[0]['children_count']) ? $booking_details[0]['children_count'] : "";
@@ -9725,12 +9730,12 @@ $filename=$event_date.' '.$host;
 	    ob_start();
 	    
 $pay =($paid_amount != $event_amount)?", Paid: \highlight1\b ".$paid_amount." \highlight0\b0\ ":", Paid:  \highlight2\b ".$paid_amount." \highlight0\b0\ ";
-
+//Date: '.$date.' \par
 $html.='{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
 {\colortbl ;\red255\green0\blue0;\red255\green0\blue255;\red255\green255\blue0;}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs22\par
  \tab\tab\tab    \tab\tab    \cf1\b Super Steph Party\cf0\b0\par
-Date: '.$date.' \par
+
 Fee:  '.$event_amount.$pay .'\par
 Name:\highlight3 '.$host.' \highlight0\par
 Email:'.$email.'\par
@@ -9754,7 +9759,7 @@ Main Age of children at the party:'.$children_party.'\par
 Boys, girls or mixed party:'.$gender_party.'\par
 Has your child Seen my show before:'.$party_seen.'\par
 Mobile Number:\highlight3 '.$mobile_number.' \highlight0\par
-\highlight0 Super Steph Party2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par
+\highlight0 2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par
 \par
 }';
 		echo $html;
@@ -9935,7 +9940,7 @@ Super Steph Party2nd Mobile Number (required):'.$second_mobile.'
 			$time='All Gigs';
 		}
 
-		$booking_details = $this->db->query("SELECT * FROM booking_request where booking_status!='Cancelled' $upcomingFilter;")->result_array();
+		$booking_details = $this->db->query("SELECT * FROM booking_request where booking_status!='Cancelled' and booking_status='Ready Print' $upcomingFilter;")->result_array();
 		$html.='{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
 {\colortbl ;\red255\green0\blue0;\red255\green0\blue255;\red255\green255\blue0;}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1033\f0\fs22\par';
@@ -10011,7 +10016,9 @@ $jonty=1;
 		    	$party_seen = !empty($booking_list['party_seen']) ? $booking_list['party_seen'] : "";
 		    	$mobile_number = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		    	$second_mobile = !empty($booking_list['second_mobile']) ? $booking_list['second_mobile'] : "";
+				$parking_facility = !empty($booking_list['parking_facility']) ? $booking_list['parking_facility'] : "";
 
+		    	//parking_facility
 		    	$categoryID = !empty($booking_list['show_type']) ? $booking_list['show_type'] : "";
 
 		    	$categoryDetails = !empty($categoryID) ? explode(',', $categoryID) : "";
@@ -10042,7 +10049,7 @@ $jonty=1;
 				}else{
 				$filename=$event_date.' '.$host;
 			}
-			$filename=str_replace(" ","_",$filename);
+			//$filename=str_replace(" ","_",$filename);
 				  		header("Content-type: application/rtf");
 						header("Expires: 0");
 						header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -10056,10 +10063,10 @@ $jonty=1;
 				$resultHistory = $this->addHistory('Booking Request', 'RTF', $historyMessage);
 
 $pay =($paid_amount != $event_amount)?", Paid: \highlight1\b ".$paid_amount."\highlight0\b0\ ":", Paid:  \highlight2\b ".$paid_amount."\highlight0\b0\ ";
-// $rem =($remain_amount != 0)?", Remain: ".$remain_amount."":"";
+// $rem =($remain_amount != 0)?", Remain: ".$remain_amount."":""; Date:'.$date.' \par
 $html .='
  \tab\tab\tab    \tab\tab    \cf1\b Super Steph Party\cf0\b0\par
-Date:'.$date.' \par
+
 Fee: '.$event_amount.$pay.'\par
 Name:\highlight3 '.$host.'\highlight0\par
 Email:'.$email.',\par
@@ -10071,6 +10078,7 @@ Type Of Show:  \highlight3 '.$show_type_text.' \highlight0\par
 How many party bags required:\highlight2 '.$party_bags.' \highlight0\par
 Character:\highlight3 '.$show_type.' \highlight0\par
 Address OF Party:\highlight3 '.$party_address.' \highlight0\par
+Parking facilities (any paid parking is to be paid by the client):\highlight3 '.$parking_facility.' \highlight0\par
 Home Address:'.$home_address.'\par
 Is the Party inside or outside:'.$party_in_out.'\par
 Rain contingency plans:'.$rain_plan.'\par 
@@ -10082,16 +10090,8 @@ Main Age of children at the party:'.$children_party.'\par
 Boys, girls or mixed party:'.$gender_party.'\par
 Has your child Seen my show before:'.$party_seen.'\par
 Mobile Number:\highlight3 '.$mobile_number.' \highlight0\par
-Super Steph Party2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par\page
-
-';
-		// New Rakesh - Jonty Notepad tags for wordpad page break codes starts Here .
-
-		// New Rakesh - Jonty Notepad tags for wordpad page break codes ends here .
-		//$html .= '<div class="break" style="page-break-before:always;"></div><Split by PageBrake>';
-			   
-
-				
+2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par\page
+';				
 	    	}
 $html.='}';
 	    	echo $html;

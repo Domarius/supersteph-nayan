@@ -69,9 +69,9 @@ app.controller("LookingForwardController", function($scope, $http, toaster, $loc
 	$scope.assignEmail = function(){
 		if(confirm("Do you want to send email?")){
 			$scope.get.booking_id= $scope.SelectID;
-			$http.post('ignoreLookingForward', $scope.get).success(function(data){
+			$http.post('sendLookingEmail', $scope.get).success(function(data){
 				$scope.result = data;
-				if(data.status == 0){
+				if(data.status == 0){ 
 					toaster.pop("success", data.message, "");
 					$scope.delete_count = 0;
 					$window.location.href = base_url+'welcome/lookingForward';

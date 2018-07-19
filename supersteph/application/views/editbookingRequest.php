@@ -590,7 +590,8 @@
                       </div>
                                     </td> -->
                                     <td>{{list.start_time}}</td>
-                                    <td>{{list.duration}} hour
+                                   <!--  <td>{{list.end_time}}</td> -->
+                                    <td>{{list.duration}} 
                      <!--  <select ng-model="list.duration">
                         <option ng-repeat="x in durationListing" value="{{x.value}}">{{x.label}}</option>
                       </select> -->

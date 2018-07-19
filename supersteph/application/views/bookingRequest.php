@@ -147,7 +147,7 @@
 											<td>{{list.event_date}}</td>
 											<td>{{list.show_type}}</td>
 											<td>{{list.show_time}} </td>
-											<td>{{list.duration}} Hour</td>
+											<td>{{list.duration}} </td>
 											
 											<td>Total= {{list.event_amount}} <br>Paid = {{list.paid_amount}}<br>Remain ={{list.remain_amount}}</td> 
 											<!-- <td>Paid = {{list.paid_amount}}</td>

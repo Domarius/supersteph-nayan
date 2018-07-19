@@ -89,14 +89,14 @@ $scope.ignoreassignEmail = function(){
 			$scope.get.booking_id= $scope.SelectID;
 			$http.post('ignorePaperworkEmail', $scope.get).success(function(data){
 				$scope.result = data;
-				//if(data.status == 0){
+				if(data.status == 1){
 					toaster.pop("success", data.message, "");
 					$scope.delete_count = 0;
 					$window.location.href = base_url+'welcome/chasingPaperwork';
 				}
-				// else{
-				// 	toaster.pop("error", data.message, "");
-				// }
+				 else{
+				 	toaster.pop("error", data.message, "");
+				 }
 			});
 		}
     };

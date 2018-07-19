@@ -52,10 +52,30 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 
 
 	$scope.durationListing=[
-		{"label":"1 Hours", "value":"1"},
-		{"label":"1.5 Hours", "value":"1.5"},
-		{"label":"2 Hours", "value":"2"}, 
-		{"label":"2.5 Hours", "value":"2.5"}
+			{"label":"15 Min", "value":"15 Min"},
+		{"label":"30 Min", "value":"30 Min"},
+		{"label":"45 Min", "value":"45 Min"},
+		{"label":"1 Hours", "value":"1 Hours"},
+		{"label":"1 Hours 15 Minute", "value":"1 Hours 15 Minute"},
+		{"label":"1 Hours 30 Minute", "value":"1 Hours 30 Minute"},
+		{"label":"1 Hours 45 Minute", "value":"1 Hours 45 Minute"},
+		{"label":"2 Hours", "value":"2 Hours"},		
+		{"label":"2 Hours 15 Minute", "value":"2 Hours 15 Minute"},
+		{"label":"2 Hours 30 Minute", "value":"2 Hours 30 Minute"},
+		{"label":"2 Hours 45 Minute", "value":"2 Hours 45 Minute"},
+		{"label":"3 Hours", "value":"3 Hours"},		
+		{"label":"3 Hours 15 Minute", "value":"3 Hours 15 Minute"},
+		{"label":"3 Hours 30 Minute", "value":"3 Hours 30 Minute"},
+		{"label":"3 Hours 45 Minute", "value":"3 Hours 45 Minute"},
+		{"label":"4 Hours", "value":"4 Hours"},		
+		{"label":"4 Hours 30 Minute", "value":"4 Hours 30 Minute"},
+		{"label":"5 Hours", "value":"5 Hours"},		
+		{"label":"5 Hours 30 Minute", "value":"5 Hours 30 Minute"},
+		{"label":"6 Hours", "value":"6 Hours"},		
+		{"label":"6 Hours 30 Minute", "value":"6 Hours 30 Minute"},
+		{"label":"7 Hours", "value":"7 Hours"},		
+		{"label":"7 Hours 30 Minute", "value":"7 Hours 30 Minute"},
+		{"label":"8 Hours", "value":"8 Hours"},	
 	];
 
 	init();
