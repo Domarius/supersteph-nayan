@@ -30,7 +30,8 @@
                 <div class="box">
                   <div class="box-header">
                     <div class="col-sm-6"> 
-                      <input type="text" class="search-filter" placeholder="Search by rating" ng-model="searchData" ng-change="searchFunction(searchData)">
+                      <input type="text" class="search-filter" placeholder="Search by Booking Name , Performer Name ,Rating,Good points,Bad points" ng-model="searchData" ng-change="searchFunction(searchData)">
+                     
                       <?php $response=$_GET['response']; if(!empty($response)){ 
 if($response=='success'){
 echo '<span style="background:green;padding: 10px;text-align: right;float: right;color: #FFF;">Feedback Edited Successfully </span>';

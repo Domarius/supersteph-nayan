@@ -93,12 +93,13 @@
 				                              <input type="checkbox" ng-click="selectCheck('All', get.checkalltype)" data-ng-model="get.checkalltype" style="opacity: 1 !important;" /></span>
 				                            </th> 
 				                            <!-- <th>S.No</th> -->
-				                            <th>Name</th>
+				                            <th>Booking Name</th>
 				                            <th>Email</th>
 				                            <th>Mobile</th>
-				                            <th>Show Type</th>
+				                            <!-- <th>Show Type</th> -->
 				                           	<th>Show Date</th>
-				                           	<th>Show Time</th>
+				                           	<th>Show Time</th> 
+				                           	<th>Feedbacks</th>
 				                           	
 	                          			</tr>
 	                        		</thead>
@@ -111,10 +112,11 @@
 				                            <td>{{list.name}}</td>
 				                            <td>{{list.email}}</td>
 				                            <td>{{list.mobile_number}}</td>
-				                            <td>{{list.show_type}}</td>
+				                          <!--   <td>{{list.show_type}}</td> -->
 				                            <td>{{list.event_date}}</td>
 				                            <td>{{list.show_time}} - {{list.show_end_time}}</td>
-				                            
+				                             <td>{{list.feedbacks}}</td>
+
 	                          			</tr>
 	                        		</tbody>
 	                      		</table>

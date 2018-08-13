@@ -29,3 +29,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
+
+#custom
+angularJs.zip
+magic.zip
+supersteph-05-03-2018.zip

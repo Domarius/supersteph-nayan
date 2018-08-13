@@ -190,7 +190,7 @@ $scope.BookingID = function(id){
 	$scope.date = new Date();
 	$scope.hstep = 1;
   	$scope.mstep = 1;
-  	$scope.ismeridian = true;
+  	//$scope.ismeridian = true;
 	//End Timepicker
 
 	//Start Datepicker
@@ -203,7 +203,7 @@ $scope.BookingID = function(id){
         return false;
     }
 	$scope.editBookingRequest = function(){
-		console.log($scope.get);
+		//console.log($scope.get);
 $scope.isDisabled = true;
 		//if(parseInt($scope.get.pay_amount) <= parseInt($scope.get.remain_amount) || $scope.get.paid != "") {
 				$http.post('../saveEditBookingRequest', $scope.get).success(function(data){
@@ -211,7 +211,8 @@ $scope.isDisabled = true;
 					//alert("Okay");
 					
 					//alert(data);
-					//console.log($scope.listing)
+				//	console.log($scope.listing)
+				//	console.log(data.response);
 					if(data.status == 0){
 
 						$scope.get = "";
@@ -220,11 +221,11 @@ $scope.isDisabled = true;
 						//if(isConfirmed){
 							$timeout(function() {  
 			                  	$window.location.href = base_url+'welcome/editbookingRequest/?'+id+'/?'+page_id;  
-			                }, 100);  
+			                }, 100);   
 			                 
 						// }
 						// else{
-						//  	$timeout(function() {  
+						//  	$timeout(function() {       
 			   //                	$window.location.href = base_url+'welcome/bookingRequest/?'+page_id;  
 			   //               }, 100);  
 						//  }

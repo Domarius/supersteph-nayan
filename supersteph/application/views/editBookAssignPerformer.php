@@ -17,7 +17,7 @@
   </style>
   <style>
 .glyphicon {
-    display:none !important;
+    display:none !important;  
   }
       </style>
   <div class="content-wrapper">
@@ -119,12 +119,15 @@
     <ui-select-choices repeat="type.id as type in (categoryListing | filter: $select.search)  track by type.id">
     <small>
       {{type.category_name}}
+      
     </small>
     </ui-select-choices>
   </ui-select>
 
 </td>
-<td><div uib-timepicker ng-model="list.start_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+<td>
+<input type="text" ng-model="list.start_time" name="start_time"><!-- {{list.start_time}}
+<div uib-timepicker ng-model="list.start_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div> -->
                    </td>
 <td><select ng-model="list.duration">
                         <option ng-repeat="x in durationListing" value="{{x.value}}">{{x.label}}</option>
@@ -133,7 +136,7 @@
 <input type="checkbox" name="list.confirmemail" ng-model="list.confirmemail" ng-checked="true" > Send Email
 </td> -->
 <td><a href="<?php echo base_url() ?>welcome/cancelPerformer/?id={{list.assign_id}}&parameter={{parameters.page}}&booking={{list.booking_id}}" onclick="return confirm('Are you sure you would like to remove this performer ?');"><span class="btn btn-sm btn-info">Remove</span></a> 
-<!--a href="<?php echo base_url() ?>welcome/editAssignPerformer/?{{list.assign_id}}/?{{parameters.page}}" ><span class="btn btn-sm btn-info">Edit</span></a--><span class="btn btn-sm btn-info" ng-click="editAssignPerformer(list)">Save</span>
+<!--a href="<?php echo base_url() ?>welcome/editAssignPerformer/?{{list.assign_id}}/?{{parameters.page}}" ><span class="btn btn-sm btn-info">Edit</span></a--><!-- <span class="btn btn-sm btn-info" ng-click="editAssignPerformer(list)">Save</span> -->
 <span class="btn btn-sm btn-info" ng-click="emailAssignPerformer(list)">Email</span>
  </td>
 </tr>
@@ -178,8 +181,10 @@
                         <a href="<?php echo base_url() ?>welcome/editbookingRequest/?{{id}}/?{{parameters.page}}" >
                           <button type="button" class="btn btn-warning">Back</button>
                         </a>
-<!-- 
-                        <button type="submit" class="btn btn-success" ng-click="editBookAssignPerformer()">Save and Email</button> -->
+ 
+<!--  ng-disabled="isDisabled" ng-model="isDisabled" disableClick();"  id="btn1"-->
+                        
+                        <button type="submit" class="btn btn-success" ng-disabled="isDisabled" ng-model="isDisabled"  ng-click="editBookAssignPerformer()" >Save</button> 
                          <a href="<?php echo base_url() ?>welcome/bookPerformer/?{{id}}/?{{parameters.page}}">
                           <button type="button" class="btn btn-sm btn-warning"> Assign Performers</button>
                         </a>

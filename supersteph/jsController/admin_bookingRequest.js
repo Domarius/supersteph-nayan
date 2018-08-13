@@ -25,12 +25,12 @@ app.controller("BookingRequestController", function($scope, $http, toaster, $loc
 
 
 	$scope.statusListing=[];
-
+//{"label":"Completed", "value":"Completed"},    
 	$scope.statusListing=[
 		{"label":"Pending", "value":"Pending"},		
 		{"label":"Ready Print", "value":"Ready Print"},
 		{"label":"Feedback Pending", "value":"Feedback Pending"},
-		{"label":"Completed", "value":"Completed"},
+		
 		{"label":"Cancelled", "value":"Cancelled"}
 	];
 //{"label":"Ignored", "value":"Ignored"},
@@ -62,6 +62,7 @@ app.controller("BookingRequestController", function($scope, $http, toaster, $loc
 		$http.post('bookingRequest', $scope.parameters).success(function(data){
 			update(data.response.pop().total);
 			$scope.listing=data.response;
+			console.log(data.response);
 		});
 	}
 

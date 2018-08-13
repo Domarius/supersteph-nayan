@@ -57,13 +57,20 @@
           <toaster-container toaster-options="{'position-class': 'toast-top-right','time-out': 5000,'close-button':true}"></toaster-container> 
         <!-- / toaster directive -->
 
-
+<?php 
+// $con=mysqli_connect('localhost','supertc4_super','admin@123','supertc4_supersteph05');
+// $result=$con->query('SELECT * from booking_request');
+// //$row=$result->array();
+// echo base64_decode($_GET['id']);
+// $rows=$result->fetch_assoc();
+// print_r($rows);
+ ?>
         <div class="content-wrapper">
          
           <section class="content">
             <div class="row">
              
-              <div class="col-md-9">
+             <!--  <div class="col-md-9">
 
                 <div class="box box-primary">
                   <div class="box-body">
@@ -114,18 +121,79 @@
                         </div>
                         <div class="col-sm-6">
                           <img ng-src="{{list.profile_image}}" style="height: 60px; width: 60px;">
+
                         </div>
                       </div> 
                     </div>
                   </div>
-                </div>
-
+                </div> -->
+   <div class="box box-primary">              
+        <div class="col-sm-6" ng-repeat="lists in listings" style="
+    float: none;
+">
+                 <div class="row">
+                        <div class="col-sm-3">
+                          <label>Booking Title:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.name}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Date:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.event_date}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Time:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.show_time}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Duration:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.duration}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Type:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.show_type_text}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Character:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.show_type}}</p>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-3">
+                          <label>Fee:</label>  
+                        </div>
+                        <div class="col-sm-6">
+                          <p>{{lists.event_amount}}</p>
+                        </div>
+                    </div> 
+          </div>
+     </div>
                 <div class="box box-primary">
-              
-                  <form  name="addStep">
+                  <form  name="addStep" ng-repeat="get in listings">
                     <div class="box-body">
                      <div class="form-group">
-                        <label>Where did you hear of SuperSteph?:</label>
+                        <label>Where did you hear of SuperSteph?:</label> 
                         <input type="text" class="form-control" placeholder="" ng-model="get.hear_supersteph" required>
                       </div>
                     

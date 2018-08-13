@@ -661,8 +661,10 @@ class Welcome extends CI_Controller {
 
     		$filter = !empty($jsondata['filter']) ? $jsondata['filter'] : "";
     		$searchdata = !empty($jsondata['searchtype']) ? $jsondata['searchtype'] : "";
-    		$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
-    		$endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
+    		// $startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
+    		// $endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
+    		$startDate = !empty($jsondata['start_date']) ? $jsondata['start_date'] : "";
+    		$endDate = !empty($jsondata['end_date']) ? $jsondata['end_date'] : "";
 
     		if($filter == '1'){
     			$currentDate = date("Y-m-d");
@@ -741,7 +743,7 @@ class Welcome extends CI_Controller {
       			$booking_details = $this->db->query("SELECT * FROM booking_request where booking_status!='Cancelled'  and booking_status!='Completed' order by event_date ASC $limitto;")->result_array();
       		}
 	      	
-	      
+	       
 	      	if(!empty($booking_details)){
 		        foreach($booking_details  as $booking_list){
 		          
@@ -752,8 +754,9 @@ class Welcome extends CI_Controller {
 		          	$temp['email'] = !empty($booking_list['email']) ? $booking_list['email'] : "";
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+		          		
+		          //	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
 		          	$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
 
@@ -835,7 +838,8 @@ class Welcome extends CI_Controller {
 
     		$filter = !empty($jsondata['filter']) ? $jsondata['filter'] : "";
     		$searchdata = !empty($jsondata['searchtype']) ? $jsondata['searchtype'] : "";
-    		$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
+    		$startDate = !empty($jsondata['start_date']) ? $jsondata['start_date'] : "";
+    		//$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
     		$endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
 
     		if($filter == '1'){
@@ -927,7 +931,8 @@ class Welcome extends CI_Controller {
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
 		          	
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time']  : "";
+		          	//$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
 		          	$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
 
@@ -1098,8 +1103,8 @@ class Welcome extends CI_Controller {
 
     		$filter = !empty($jsondata['filter']) ? $jsondata['filter'] : "";
     		$searchdata = !empty($jsondata['searchtype']) ? $jsondata['searchtype'] : "";
-    		$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
-    		$endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
+    		$startDate = !empty($jsondata['start_date']) ? $jsondata['start_date'] : "";
+    		$endDate = !empty($jsondata['end_date']) ? $jsondata['end_date'] : "";
     		
     		if($filter == '1'){
     			$currentDate = date("Y-m-d");
@@ -1195,8 +1200,8 @@ class Welcome extends CI_Controller {
 		          	$temp['email'] = !empty($booking_list['email']) ? $booking_list['email'] : "";
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          //$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
 		          	$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
 
@@ -1282,7 +1287,7 @@ class Welcome extends CI_Controller {
 
     		$filter = !empty($jsondata['filter']) ? $jsondata['filter'] : "";
     		$searchdata = !empty($jsondata['searchtype']) ? $jsondata['searchtype'] : "";
-    		$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
+    		$startDate = !empty($jsondata['start_date']) ? $jsondata['start_date'] : "";
     		$endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
     		
     		if($filter == '1'){
@@ -1379,8 +1384,9 @@ class Welcome extends CI_Controller {
 		          	$temp['email'] = !empty($booking_list['email']) ? $booking_list['email'] : "";
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
 		          	
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	//$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
 		          	$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
 
@@ -1470,9 +1476,11 @@ class Welcome extends CI_Controller {
 	    	$mobile_number = !empty($jsondata['mobile_number']) ? $jsondata['mobile_number'] : "";
 	    	$event_date = !empty($jsondata['event_date']) ? date('Y-m-d', strtotime($jsondata['event_date'])) : date('Y-m-d');
 	    	$show_type = !empty($jsondata['show_type']) ? implode(',', $jsondata['show_type']) : "";
-
-	    	$show_time = !empty($jsondata['show_time']) ? date('H:i', strtotime($jsondata['show_time'])) : "";
+			$show_time = !empty($jsondata['show_time']) ? $jsondata['show_time'] : "";
+	    	
+	    //	$show_time = !empty($jsondata['show_time']) ? date('H:i', strtotime($jsondata['show_time'])) : "";
 	    	$duration = !empty($jsondata['duration']) ? $jsondata['duration'] : "";
+	    	$notes = !empty($jsondata['notes']) ? $jsondata['notes'] : "";
 
 	    	$start_datetime = $event_date.' '.$show_time;
 
@@ -1510,8 +1518,9 @@ class Welcome extends CI_Controller {
 				'duration'=> $duration,
 				'party_address' =>$party_address,
 				'show_end_time'=> $show_end_time,
-				'start_datetime'=> $start_datetime,
+				'start_datetime'=> $show_time,
 				'end_datetime'=> $end_datetime,
+				'notes'=> $notes,
 				'created_on'=>date('Y-m-d H:i:s'),
 				'updated_on'=>date('Y-m-d H:i:s')
 			);
@@ -1524,7 +1533,9 @@ class Welcome extends CI_Controller {
 	        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 	        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 	        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
-	        $show_time = !empty($jsondata['show_time']) ? date('g:i A', strtotime($jsondata['show_time'])) : "";
+	      //  $show_time = !empty($jsondata['show_time']) ? date('g:i A', strtotime($jsondata['show_time'])) : "";
+	        $show_time = !empty($jsondata['show_time']) ? $jsondata['show_time'] : "";
+	    	
 	        $categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 
     		$categoryDetails = !empty($show_type) ? explode(',', $show_type) : "";
@@ -1545,7 +1556,7 @@ class Welcome extends CI_Controller {
 	        $url = HTTP_CONTROLLER."generalAddBooking/?".$booking_id;
 	        $dayOfWeek = date("l", strtotime($event_date));
 					
-	        $data = array('LINK' => $url,'NAME' => $name,'FEE' => $event_amount,'DURATION' => $duration, 'SHOW_DATE' => $event_date, 'DAY' => $dayOfWeek, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $showType,'FIRST_NAME'=>$name,'SHOW_TEXT'=>$show_type_text);
+	        $data = array('LINK' => $url,'NAME' => $name,'FEE' => $event_amount,'DURATION' => $duration, 'SHOW_DATE' => $event_date, 'DAY' => $dayOfWeek, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $showType,'FIRST_NAME'=>$name,'SHOW_TEXT'=>$show_type_text,'NAME'=>$name);
 	        if(!empty($data)){
 	        	foreach($data as $key => $value){
 					$message = str_replace('{{'.$key.'}}', $value, $message);
@@ -1569,10 +1580,10 @@ class Welcome extends CI_Controller {
     		$resultHistory = $this->addHistory('Booking Request', 'Add', $historyMessage);
 
 	      	if(!empty($result)){
-	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Booking Request added successfully!", 'response' =>$response)); die;
+	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Booking Request added successfully!", 'response' =>$response,'booking_id'=>$id)); die;
 	      	}
 	      	else{
-	        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Booking Request not added!", 'response' =>$response)); die;
+	        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Booking Request not added!", 'response' =>$response,'booking_id'=>$id)); die;
 	      	}
     	}
   	} 
@@ -1603,6 +1614,13 @@ class Welcome extends CI_Controller {
 	        	foreach($booking_details  as $booking_list){
 	          
 		          	$temp['id'] = !empty($booking_list['id']) ? $booking_list['id'] : "";
+		          	$temp['id'] = !empty($booking_list['id']) ? $booking_list['id'] : "";
+		          	$id=!empty($booking_list['id']) ? $booking_list['id'] : "";
+	       				$temp['encripted_id'] = !empty($id) ? base64_encode($id) : "";
+					$booking_id = !empty($id) ? base64_encode($id) : "";
+			
+	        		$url = HTTP_CONTROLLER."generalAddBooking/?".$booking_id;
+	        		$temp['url_paperwork'] = $url; 
 		          	$temp['name'] = !empty($booking_list['name']) ? $booking_list['name'] : "";
 		          	$temp['email'] = !empty($booking_list['email']) ? $booking_list['email'] : "";
 		          	//$temp['event_amount'] = !empty($booking_list['event_amount']) ? $booking_list['event_amount'] : "";
@@ -1610,7 +1628,8 @@ class Welcome extends CI_Controller {
 		          	$temp['show_type_text'] = !empty($booking_list['show_type_text']) ? $booking_list['show_type_text'] : "";
 		          	$temp['event_date1'] = !empty($booking_list['event_date']) ? gmdate("Y-m-d\TH:i:s.000\Z", strtotime($booking_list['event_date'])) : "";
 		          	
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($booking_list['show_time'])) : "";
+		          //	$temp['show_time'] = !empty($booking_list['show_time']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($booking_list['show_time'])) : "";
+		          		$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
 		          	$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'] : "";
 
 		          	$temp['hear_supersteph'] = !empty($booking_list['hear_supersteph']) ? $booking_list['hear_supersteph'] : "";
@@ -1634,6 +1653,7 @@ class Welcome extends CI_Controller {
 		          	$temp['children_count'] = !empty($booking_list['children_count']) ? $booking_list['children_count'] : "";
 		          	$temp['party_seen'] = !empty($booking_list['party_seen']) ? $booking_list['party_seen'] : "";
 		          	$temp['show_fullname'] = !empty($booking_list['show_fullname']) ? $booking_list['show_fullname'] : "";
+		          	$temp['notes'] = !empty($booking_list['notes']) ? $booking_list['notes'] : "";
 
 		          	$category = !empty($booking_list['show_type']) ? $booking_list['show_type'] : "";
 					$category_details = explode(",",$category);
@@ -1704,7 +1724,9 @@ class Welcome extends CI_Controller {
 	    	$mobile_number = !empty($jsondata['mobile_number']) ? $jsondata['mobile_number'] : "";
 	    	$event_date = !empty($jsondata['event_date']) ? date('Y-m-d', strtotime($jsondata['event_date'])) : "";
 	    	$show_type = !empty($category_id) ? $category_id : "";
-	    	$show_time = !empty($jsondata['show_time']) ? date('H:i A', strtotime($jsondata['show_time'])) : "";
+	    	//$show_time = !empty($jsondata['show_time']) ? date('H:i A', strtotime($jsondata['show_time'])) : "";
+
+	    	$show_time = !empty($jsondata['show_time']) ? $jsondata['show_time'] : "";
 	    	$duration = !empty($jsondata['duration']) ? $jsondata['duration'] : "";
 
 	    	$hear_supersteph = !empty($jsondata['hear_supersteph']) ? $jsondata['hear_supersteph'] : "";
@@ -1726,6 +1748,8 @@ class Welcome extends CI_Controller {
 	    	$party_seen = !empty($jsondata['party_seen']) ? $jsondata['party_seen'] : "";
 	    	$show_fullname = !empty($jsondata['show_fullname']) ? $jsondata['show_fullname'] : "";
 	    	$email_confirm = !empty($jsondata['email_confirm']) ? $jsondata['email_confirm'] : "";
+	    	$email_paperwork = !empty($jsondata['email_paperwork']) ? $jsondata['email_paperwork'] : "";
+	    	$notes = !empty($jsondata['notes']) ? $jsondata['notes'] : "";
 
 
 	    	$start_datetime = $event_date.' '.$show_time;
@@ -1800,6 +1824,7 @@ class Welcome extends CI_Controller {
 				'children_count'=> $children_count,
 				'party_seen'=> $party_seen,
 				'show_fullname'=> $show_fullname,
+				'notes'=> $notes,
 				'updated_on'=>date('Y-m-d H:i:s')
 			);
 			$updatebookingassign = $this->db->query("UPDATE `assign_booking` SET `assign_date`='$event_date'  WHERE `booking_request_id`='$id';");
@@ -1813,7 +1838,7 @@ class Welcome extends CI_Controller {
 				'updated_on'=>date('Y-m-d H:i:s')		
 			);
     		$this->db->where('booking_request_id',$id);
-    		$results = $this->db->update('assign_booking',$updates);
+    		//$results = $this->db->update('assign_booking',$updates);
     		$updatdon=date('Y-m-d H:i:s');
 				
     		$historyMessage = "Admin edited ".$name." booking request details";
@@ -1825,7 +1850,8 @@ class Welcome extends CI_Controller {
     		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
     		$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 
@@ -1855,21 +1881,73 @@ class Welcome extends CI_Controller {
 
 		        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
  				
- 				$data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number,'SHOW_DETAILS'=>$show_type_text, 'SECOND_MOBILE' => $second_mobile, 'FEE' => $event_amount );
-		       // $data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $showTime, 'SHOW_TYPE' => $showType); 
-		        if(!empty($data)){
+ 				$data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number,'SHOW_DETAILS'=>$show_type_text, 'SECOND_MOBILE' => $second_mobile, 'FEE' => $event_amount ,'NAME'=>$name);
+ 
+		       // email_paperwork$data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $showTime, 'SHOW_TYPE' => $showType); 
+		        if(!empty($data)){  
 		        	foreach($data as $key => $value){ 
 
 						$subject = str_replace('{{'.$key.'}}', $value, $subject);
 						$message = str_replace('{{'.$key.'}}', $value, $message);
 					}
 		       	}
+		       	 $result_mail = $this->sendMail($from_email, $customerEmail, $message, $subject);
 if(!empty($email_confirm)){
 		        $result_mail = $this->sendMail($from_email, $customerEmail, $message, $subject);
     	}	
     	}
     		// End Customer Email
 
+
+//Chasing paperwork email
+
+
+if(!empty($email_paperwork)){ 
+		       
+
+	$booking_details = $this->db->query("SELECT * FROM booking_request where id='$id'")->result_array();
+
+			  		$name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
+					$to_email = !empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
+
+				$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='CHASING_PAPERWORK' ")->result_array();
+
+		        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
+		        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
+
+		        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
+			        $booking_id = !empty($id) ? base64_encode($id) : "";
+
+			        $url = HTTP_CONTROLLER."generalAddBooking/?".$booking_id;
+
+			        $data = array('LINK' => $url, 'SHOW_NAME' => $name);
+			        if(!empty($data)){
+			        	foreach($data as $key => $value){
+							$message = str_replace('{{'.$key.'}}', $value, $message);
+						}
+			       	}
+
+			 	 	$result_mail = $this->sendMail($from_email, $to_email, $message, $subject);
+
+			 	 	// Start Admin History
+					$historyMessage = "Admin sent paperwork mail to ".$name." booking request details";
+					$resultHistory = $this->addHistory('Booking Request', 'paperwork mail', $historyMessage);
+					// End Admin History
+
+			 	 	// Start Admin Email
+					$admin_details = $this->db->query("SELECT * FROM admin;")->result_array();
+					$admin_email = !empty($admin_details[0]['email']) ? $admin_details[0]['email'] : "";
+
+					if(!empty($admin_email)){
+				        $result_mail_admin = $this->sendMail($from_email, $admin_email, $message, $subject);
+					}
+
+
+
+
+}	
+
+//chasing paperwrk email end 
     		// Start Admin Email
     		$admin_details = $this->db->query("SELECT * FROM admin;")->result_array();
     		$admin_email = !empty($admin_details[0]['email']) ? $admin_details[0]['email'] : "";
@@ -1882,7 +1960,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 		        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 		        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
-		      	$data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party,'SHOW_DETAILS'=>$show_type_text, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'SECOND_MOBILE' => $second_mobile,'FEE'=>$event_amount);
+		      	$data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party,'SHOW_DETAILS'=>$show_type_text, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'SECOND_MOBILE' => $second_mobile,'FEE'=>$event_amount,'NAME'=>$name);
 		    
 		       // $data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'SECOND_MOBILE' => $second_mobile);
 		        //$data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $showTime, 'SHOW_TYPE' => $showType);
@@ -1911,7 +1989,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 
 			          	$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id' ")->result_array();
 	  		
-				  		//$name = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
+				  		$pname = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
 						$to_email = !empty($performer_details[0]['email']) ? $performer_details[0]['email'] : "";
 
 			          	$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='EDIT_BOOKING' ")->result_array();
@@ -1920,7 +1998,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 				        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 				        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
 				       
-				        $data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party,'SHOW_DETAILS'=>$show_type_text, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'FEE' => $event_amount, 'SECOND_MOBILE' => $second_mobile);
+				        $data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party,'SHOW_DETAILS'=>$show_type_text, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'FEE' => $event_amount, 'SECOND_MOBILE' => $second_mobile,'NAME'=>$pname);
 		    
 				       //   $data = array('HOST' =>$name, 'SHOW_DATE' => $showDate, 'EMAIL' => $customerEmail, 'SHOW_START_TIME' => $show_time, 'DURATION' => $duration, 'SHOW_TYPE' => $showType, 'PARTY_BAGS' => $party_bags, 'PARTY_ADDRESS' => $party_address, 'HOME_ADDRESS' => $home_address, 'PARKING_FACILITY' => $parking_facility, 'PARTY_IN_OUT' => $party_in_out, 'RAIN_PLAN' => $rain_plan, 'CHILD_NAME' => $child_name, 'AGE' => $age, 'DOB' => $dob, 'CHILDREN_COUNT' => $children_count, 'CHILDREN_PARTY' => $children_party, 'GENDER_PARTY' => $gender_party, 'PARTY_SEEN' => $party_seen, 'MOBILE_NUMBER' => $mobile_number, 'SECOND_MOBILE' => $second_mobile);
 				        //$data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $showTime, 'SHOW_TYPE' => $showType);
@@ -1935,7 +2013,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 				       // $result_mail = $this->sendMail($from_email, $to_email, $message, $subject);
 			        }
 		      	}
-    		
+    		     
 	      	if(!empty($result)){
 	      		if(!empty($email_confirm)){
 					echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Mail Sent Successfully!")); die;	      
@@ -2066,7 +2144,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	    		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 	    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 	    		$name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 	    		$mobile_a = !empty($booking_details[0]['mobile_a']) ? $booking_details[0]['mobile_a'] : "";
@@ -2237,7 +2316,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 			$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
     		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 
@@ -2450,7 +2530,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 			          	$assign_date = !empty($assign_list['assign_date']) ? $assign_list['assign_date'] : "";
 			          	$assign_start_datetime = !empty($assign_list['assign_start_datetime']) ? $assign_list['assign_start_datetime'] : "";
 			          	$duration = !empty($assign_list['duration']) ? $assign_list['duration'] : "";
-			          	$assign_start_datetime = !empty($assign_start_datetime) ? date('g:i A', strtotime($assign_start_datetime)) : "";
+//			          	$assign_start_datetime = !empty($assign_start_datetime) ? date('g:i A', strtotime($assign_start_datetime)) : "";
+			          	$assign_start_datetime = !empty($assign_start_datetime) ? $assign_start_datetime : "";
 	    	
 			          	$booking_details = $this->db->query("SELECT * FROM booking_request where id='$booking';")->result_array();
 			          	$host = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
@@ -2479,7 +2560,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 				  		$name = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
 						$to_email = !empty($performer_details[0]['email']) ? $performer_details[0]['email'] : "";
 
-			          	$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='CANCEL_EVENT_PERFORMER' ")->result_array();
+			          	$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='CANCEL_EVENT_PERFORMER' ")->result_array(); 
 
 				        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 				        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
@@ -2813,8 +2894,11 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 
 	        		$temp['id'] = !empty($performer_list['id']) ? $performer_list['id'] : "";
 	        		$temp['name'] = !empty($performer_list['name']) ? $performer_list['name'] : "";
-	        		$temp['start_time'] = !empty($show_time) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($show_time)) : "";
-	        		$temp['end_time'] = gmdate("Y-m-d\TH:i:s.000\Z");
+	        		//$temp['start_time'] = !empty($show_time) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($show_time)) : "";
+	        		$temp['start_time'] = !empty($show_time) ? $show_time : "";
+	        		$temp['end_time'] = !empty($show_time) ? $show_time : "";;
+	        		
+	        		//$temp['end_time'] = gmdate("Y-m-d\TH:i:s.000\Z");
 	        		
 	        		$response[] = $temp;
 	        	}
@@ -2851,15 +2935,15 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	        		$temp['id'] = !empty($booking_list['id']) ? $booking_list['id'] : "";
 	        		$temp['name'] = !empty($booking_list['name']) ? $booking_list['name'] : "";
 	        		$temp['event_date'] = !empty($booking_list['event_date']) ? $booking_list['event_date'] : "";
-	        		$temp['show_time'] = !empty($booking_list['show_time']) ? date("g:i A", strtotime($booking_list['show_time'])) : "";
-	        		$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date("g:i A", strtotime($booking_list['show_end_time'])) : "";
+	        		$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+	        		//$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
 
 	        		$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'].' Hours' : "";
-
+ 
 	        		$response[] = $temp;
 	        	}
 	        }
-	      	
+	      	 
 	      	if(!empty($response)){
 	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Booking List!", 'response' =>$response)); die;
 	      	}
@@ -2900,12 +2984,15 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		             }
 
 	    			$performer_id = !empty($performer_list['id']) ? $performer_list['id'] : "";
-	    			$performer_name = !empty($performer_list['name']) ? $performer_list['name'] : "";
-	    			$assign_start_datetime = !empty($performer_list['start_time']) ? date("H:i ", strtotime($performer_list['start_time'])) : "";
+	    			//$performer_name = !empty($performer_list['name']) ? $performer_list['name'] : "";
+	    			//$assign_start_datetime = !empty($performer_list['start_time']) ? date("H:i ", strtotime($performer_list['start_time'])) : "";		
+	    			$assign_start_datetime = !empty($performer_list['start_time']) ? $performer_list['start_time'] : "";		
+	    			
 	    			$fee = !empty($performer_list['fee']) ? $performer_list['fee'] : "";
 	    			//$role = !empty($performer_list['role']) ? $performer_list['role'] : "";
 	    			
-	    			$show_time = date('h:i A', strtotime($performer_list['start_time']));
+	    			$show_time = $performer_list['start_time'];
+					//$show_time = date('h:i A', strtotime($performer_list['start_time']));
 					
 	    			// $assign_end_datetime = !empty($performer_list['end_time']) ? date("H:i", strtotime($performer_list['end_time'])) : "";
 
@@ -2921,7 +3008,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 					$party_address = !empty($book_details[0]['party_address']) ? $book_details[0]['party_address'] : 0;
 					
 					$duration = !empty($performer_list['duration']) ? $performer_list['duration'] : "";
-
+					//$start_datetime=
 					$start_datetime = $event_date.' '.$assign_start_datetime;
 
 					if($duration == '1'){
@@ -2951,7 +3038,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 						'assign_date'=>$event_date,
 						'assign_start_datetime'=>$assign_start_datetime,
 						'assign_end_datetime'=>$assign_end_datetime,
-						'start_datetime'=>$start_datetime,
+						'start_datetime'=>$assign_start_datetime,
 						'end_datetime'=>$end_datetime,
 						'duration'=>$duration,
 						'created_on'=>date('Y-m-d H:i:s'),
@@ -2973,7 +3060,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 						);
 						$postWhere1 = array(
 							'id=' => $booking_request_id
-						);
+						);   
 						$this->db->where($postWhere1);
 						$result1 = $this->db->update('booking_request',$postData1);
 
@@ -2983,8 +3070,9 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 			    		$party_address = !empty($booking_details[0]['party_address']) ? $booking_details[0]['party_address'] : "";    		
 			    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 			    		
-						$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
-	    					    		
+						//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    				$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
+	    					    		     
 			    		$child_name = !empty($booking_details[0]['child_name']) ? $booking_details[0]['child_name'] : "";
 			    		$address = !empty($booking_details[0]['party_address']) ? $booking_details[0]['party_address'] : "";
 						$age = !empty($booking_details[0]['age']) ? $booking_details[0]['age'] : "";
@@ -3015,6 +3103,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 			    		// Start Performer Email
 			    		$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id' ")->result_array();
 			    		$to_email = !empty($performer_details[0]['email']) ? $performer_details[0]['email'] : "";
+			    		$pname = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
 			    		$assign_id = !empty($performer_details[0]['id']) ? base64_encode($performer_details[0]['id']) : "";
 			    		$booking_id = !empty($booking_request_id) ? base64_encode($booking_request_id) : "";
 			    		$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
@@ -3025,7 +3114,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 						$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 						//$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 						
-	    				$show_time = date('g:i A', strtotime($performer_list['start_time']));
+	    				//$show_time = date('g:i A', strtotime($performer_list['start_time']));
+						$show_time = $performer_list['start_time'];
 					
 			    		
 						$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='ADMIN_ASSIGN_PERFORMER' ")->result_array();
@@ -3037,7 +3127,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 				        $accept = HTTP_CONTROLLER."assignAcceptPerformer/?".$assign_id."/?".$booking_id;
 				        // $reject = HTTP_CONTROLLER."assignRejectPerformer/?".$assign_id."/?".$booking_id;
 
-				        $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
+				        $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept,'NAME'=>$pname);
 				        if(!empty($data)){
 				        	foreach($data as $key => $value){
 
@@ -3061,7 +3151,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 					        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 					        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
 
-				        $data = array('SHOW_DATE' => $event_date,'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $role, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'SHOW_DETAILS'=>$show_type_text,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name,'DURATION' => $duration , 'ACCEPT' => $accept);
+				        $data = array('SHOW_DATE' => $event_date,'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $role, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'SHOW_DETAILS'=>$show_type_text,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name,'DURATION' => $duration , 'ACCEPT' => $accept,'NAME'=>$pname);
 					       // $data = array('SHOW_DATE' => $event_date, 'SHOW_START_TIME' => $assign_start_datetime, 'SHOW_END_TIME' => $assign_end_datetime, 'SHOW_TYPE' => $showType, 'ADDRESS' => $party_address, 'ACCEPT' => $accept);
 					        if(!empty($data)){
 					        	foreach($data as $key => $value){
@@ -3114,8 +3204,11 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	        		$temp['id'] = !empty($booking_list['id']) ? $booking_list['id'] : "";
 	        		$temp['name'] = !empty($booking_list['name']) ? $booking_list['name'] : "";
 	        		$temp['event_date'] = !empty($booking_list['event_date']) ? $booking_list['event_date'] : "";
-	        		$temp['show_time'] = !empty($booking_list['show_time']) ? date("g:i A", strtotime($booking_list['show_time'])) : "";
-	        		$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date("g:i A", strtotime($booking_list['show_end_time'])) : "";
+	        		
+	        		$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+	        		//$temp['show_time'] = !empty($booking_list['show_time']) ? date("g:i A", strtotime($booking_list['show_time'])) : "";
+	        		$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? $booking_list['show_end_time'] : "";
+	        		//$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date("g:i A", strtotime($booking_list['show_end_time'])) : "";
 
 	        		$temp['duration'] = !empty($booking_list['duration']) ? $booking_list['duration'].' Hours' : "";
 
@@ -3161,6 +3254,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 
 	        		$temp['performer_id'] = !empty($assign_list['performer_id']) ? $assign_list['performer_id'] : "";
 	        		$temp['role'] = !empty($assign_list['role']) ? $assign_list['role'] : "";
+	        		$temp['start_time'] = !empty($assign_list['assign_start_datetime']) ? $assign_list['assign_start_datetime'] : "";
 
 	        		$performer_id = !empty($assign_list['performer_id']) ? $assign_list['performer_id'] : "";
 	        		$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id';")->result_array();
@@ -3173,17 +3267,21 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
     					$booking_id = !empty($assign_list['booking_request_id']) ? $assign_list['booking_request_id'] : "";
 
     					$booking_details = $this->db->query("SELECT * FROM booking_request where id='$booking_id';")->result_array();
-    					$show_time = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
+    					$show_time = !empty($booking_details[0]['assign_start_datetime']) ? $booking_details[0]['assign_start_datetime'] : "";
     					$show_type = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
     					$temp['show_type'] = !empty($performer_details[0]['show_type']) ? $performer_details[0]['show_type'] : "";
 
-    					$temp['start_time'] = gmdate('Y-m-d\TH:i:s.000\Z', strtotime($show_time));
+    					//$temp['start_time'] = gmdate('Y-m-d\TH:i:s.000\Z', strtotime($show_time));
+    					//$temp['start_time'] = $show_time;
     				}
     				else{
-    					$temp['start_time'] = !empty($assign_list['assign_start_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_list['assign_start_datetime'])) : "";
+    					//$temp['start_time'] = !empty($assign_list['assign_start_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_list['assign_start_datetime'])) : "";
+    					$temp['start_time'] = !empty($assign_list['assign_start_datetime']) ? $assign_list['assign_start_datetime'] : "";
     				}
-    				
-    				$temp['end_time'] = !empty($assign_list['assign_end_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_list['assign_end_datetime'])) : "";
+    				$temp['start_time'] = !empty($assign_list['assign_start_datetime']) ? $assign_list['assign_start_datetime'] : "";
+
+    				//$temp['end_time'] = !empty($assign_list['assign_end_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_list['assign_end_datetime'])) : "";
+    				$temp['end_time'] = !empty($assign_list['assign_end_datetime']) ? $assign_list['assign_end_datetime'] : "";
 
     				$temp['duration'] = !empty($assign_list['duration']) ? $assign_list['duration'] : "";
 
@@ -3217,10 +3315,10 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	      	else{
 	        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Empty Edit Book Performer name List!", 'response' =>$response)); die;
 	      	}
-	    }
+	    } 
   	}
 
-  	public function editBookPerformer(){
+  	public function editBookPerformer(){ 
 
 	    $this->checkLogin();  
 	   
@@ -3244,7 +3342,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	    			$assign_id = !empty($performer_list['assign_id']) ? $performer_list['assign_id'] : "";
 	    			$performer_id = !empty($performer_list['performer_id']) ? $performer_list['performer_id'] : "";
 	    			$performer_name = !empty($performer_list['name']) ? $performer_list['name'] : "";
-	    			$assign_start_datetime = !empty($performer_list['start_time']) ? date("H:i", strtotime($performer_list['start_time'])) : "";
+	    			//$assign_start_datetime = !empty($performer_list['start_time']) ? date("H:i", strtotime($performer_list['start_time'])) : "";		
+	    			$assign_start_datetime = !empty($performer_list['start_time']) ? $performer_list['start_time'] : "";
 
 	    			$book_details = $this->db->query("SELECT * FROM booking_request where id='$booking_request_id';")->result_array();
 					$event_date = !empty($book_details[0]['event_date']) ? $book_details[0]['event_date'] : 0;
@@ -3313,7 +3412,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		    		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 		    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+		//	$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 		    		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 		    		$categoryID = !empty($assigns_details[0]['role']) ? $assigns_details[0]['role'] : "";
@@ -3338,6 +3437,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		    		$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id' ")->result_array();
 		    		$to_email = !empty($performer_details[0]['email']) ? $performer_details[0]['email'] : "";
 		    		$assign_id = !empty($performer_details[0]['id']) ? base64_encode($performer_details[0]['id']) : "";
+		    		$performer_details = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
+		    		
 		    		$booking_id = !empty($booking_request_id) ? base64_encode($booking_request_id) : "";
 		    		$event_date = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 		    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
@@ -3355,13 +3456,13 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		    		//$categoryID = !empty($assigns_details[0]['role']) ? $assigns_details[0]['role'] : "";
 		    		
 
-					$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+					$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 		    		// $name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 		    		// $name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 		    			
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 					$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='RE-SCHEDULE_BOOKING' ")->result_array();
 
@@ -3371,7 +3472,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 
 			        $accept = HTTP_CONTROLLER."assignAcceptPerformer/?".$assign_id."/?".$booking_id;
 			        // $reject = HTTP_CONTROLLER."assignRejectPerformer/?".$assign_id."/?".$booking_id;
-			         $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $assign_start_datetime, 'SHOW_START_TIME' => $start_datetime, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
+			         $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $assign_start_datetime, 'SHOW_START_TIME' => $start_datetime, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept,'PERFORMER_DETAILS'=>$performer_details);
 			        //$data = array('SHOW_DATE' => $event_date, 'SHOW_START_TIME' => $assign_start_datetime, 'SHOW_END_TIME' => $assign_end_datetime, 'SHOW_TYPE' => $showType,'SHOW_DETAILS'=>$show_type_text, 'ACCEPT' => $accept);
 			        if(!empty($data)){
 			        	foreach($data as $key => $value){
@@ -3395,7 +3496,7 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 				        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 				        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 				        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
-				         $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
+				         $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept,'PERFORMER_DETAILS'=>$performer_details);
 				        //$data = array('SHOW_DATE' => $event_date, 'SHOW_START_TIME' => $assign_start_datetime, 'SHOW_END_TIME' => $assign_end_datetime, 'SHOW_TYPE' => $showType,'SHOW_DETAILS'=>$show_type_text, 'ACCEPT' => $accept);
 				        if(!empty($data)){
 				        	foreach($data as $key => $value){
@@ -3477,8 +3578,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		        	$temp['status'] = !empty($assign_details[0]['status']) ? $assign_details[0]['status'] : "";
 		        	$temp['reason'] = !empty($assign_details[0]['reason']) ? $assign_details[0]['reason'] : "-";
 		        	$temp['date'] = !empty($assign_details[0]['assign_date']) ? date('d-m-Y', strtotime($assign_details[0]['assign_date'])) : "";
-		        	$temp['start_time'] = !empty($assign_details[0]['assign_start_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_start_datetime'])) : "";
-		        	$temp['end_time'] = !empty($assign_details[0]['assign_end_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_end_datetime'])) : "";
+		        	$temp['start_time'] = !empty($assign_details[0]['assign_start_datetime']) ? $assign_details[0]['assign_start_datetime'] : "";
+		        	$temp['end_time'] = !empty($assign_details[0]['assign_end_datetime']) ? $assign_details[0]['assign_end_datetime'] : "";
 
 		          	$response[] =$temp;
 		        }
@@ -3544,8 +3645,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		        	$temp['role'] = implode(",",$rval);	        	
 		        	$temp['reason'] = !empty($assign_details[0]['reason']) ? $assign_details[0]['reason'] : "-";
 		        	$temp['date'] = !empty($assign_details[0]['assign_date']) ? date('d-m-Y', strtotime($assign_details[0]['assign_date'])) : "";
-		        	$temp['start_time'] = !empty($assign_details[0]['assign_start_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_start_datetime'])) : "";
-		        	$temp['end_time'] = !empty($assign_details[0]['assign_end_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_end_datetime'])) : "";
+		        	$temp['start_time'] = !empty($assign_details[0]['assign_start_datetime']) ? $assign_details[0]['assign_start_datetime'] : "";
+		        	$temp['end_time'] = !empty($assign_details[0]['assign_end_datetime']) ? $assign_details[0]['assign_end_datetime'] : "";
 
 		          	$response[] =$temp;
 		        }
@@ -3580,8 +3681,9 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 		          	$temp['booking_id'] = !empty($assign_booking_list['booking_request_id']) ? $assign_booking_list['booking_request_id'] : "";
 		          	$temp['performer_id'] = !empty($assign_booking_list['performer_id']) ? $assign_booking_list['performer_id'] : "";
 		          	$temp['duration'] = !empty($assign_booking_list['duration']) ? $assign_booking_list['duration'] : "";		          
-		        	$temp['start_time'] = !empty($assign_booking_list['start_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_booking_list['start_datetime'])) : "";
-		          	$temp['end_time'] = !empty($assign_booking_list['end_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_booking_list['end_datetime'])) : "";		          
+		        	//$temp['start_time'] = !empty($assign_booking_list['start_datetime']) ? gmdate('Y-m-d\TH:i:s.000\Z', strtotime($assign_booking_list['start_datetime'])) : "";
+		        	$temp['start_time'] = !empty($assign_booking_list['start_datetime']) ? $assign_booking_list['start_datetime'] : "";
+		          	$temp['end_time'] = !empty($assign_booking_list['end_datetime']) ? $assign_booking_list['end_datetime'] : "";		          
 		          	$response[] =$temp;
 	        	}
 	      	}
@@ -3610,13 +3712,13 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 	    if(!empty($jsondata)){
 
 	    	 $id = !empty($jsondata['assign_id']) ? $jsondata['assign_id'] : "";
-	    	 $start_time = !empty($jsondata['start_time']) ? date('H:i', strtotime($jsondata['start_time'])) : "";
+	    	 $start_time = !empty($jsondata['start_time']) ? $jsondata['start_time'] : "";
 	    	 $end_time = !empty($jsondata['end_time']) ? date('H:i', strtotime($jsondata['end_time'])) : "";
 	        //$assign_id = !empty($performer_list['assign_id']) ? $performer_list['assign_id'] : "";
 	    	 		$booking_request_id = !empty($jsondata['booking_id']) ? $jsondata['booking_id'] : "";
 	    			$performer_id = !empty($jsondata['performer_id']) ? $jsondata['performer_id'] : "";
 	    			$performer_name = !empty($jsondata['name']) ? $jsondata['name'] : "";
-	    			$assign_start_datetime = !empty($jsondata['start_time']) ? date("H:i", strtotime($jsondata['start_time'])) : "";
+	    			$assign_start_datetime = !empty($jsondata['start_time']) ? $jsondata['start_time'] : "";
 
 	    			$book_details = $this->db->query("SELECT * FROM booking_request where id=".$jsondata['booking_id']."")->result_array();
 					$event_date = !empty($book_details[0]['event_date']) ? $book_details[0]['event_date'] : 0;
@@ -3686,7 +3788,8 @@ $fee = !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
     		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
     		$categoryID = !empty($assign_details[0]['role']) ? $assign_details[0]['role'] : "";
 
@@ -3758,65 +3861,21 @@ if(!empty($confirmemail)){
 	    if(!empty($jsondata)){
 
 	    	 $id = !empty($jsondata['assign_id']) ? $jsondata['assign_id'] : "";
-	    	 $start_time = !empty($jsondata['start_time']) ? date('H:i', strtotime($jsondata['start_time'])) : "";
+	    	 $start_time = !empty($jsondata['start_time']) ? $jsondata['start_time'] : "";
 	    	 $end_time = !empty($jsondata['end_time']) ? date('H:i', strtotime($jsondata['end_time'])) : "";
 	        //$assign_id = !empty($performer_list['assign_id']) ? $performer_list['assign_id'] : "";
 	    	 		$booking_request_id = !empty($jsondata['booking_id']) ? $jsondata['booking_id'] : "";
 	    			$performer_id = !empty($jsondata['performer_id']) ? $jsondata['performer_id'] : "";
-	    			$performer_name = !empty($jsondata['name']) ? $jsondata['name'] : "";
-	    			$assign_start_datetime = !empty($jsondata['start_time']) ? date("H:i", strtotime($jsondata['start_time'])) : "";
+	     			$performer_name = !empty($jsondata['name']) ? $jsondata['name'] : "";
+	    // 			$assign_start_datetime = !empty($jsondata['start_time']) ? $jsondata['start_time'] : "";
 
-	    			$book_details = $this->db->query("SELECT * FROM booking_request where id=".$jsondata['booking_id']."")->result_array();
-					$event_date = !empty($book_details[0]['event_date']) ? $book_details[0]['event_date'] : 0;
+	    // 			$book_details = $this->db->query("SELECT * FROM booking_request where id=".$jsondata['booking_id']."")->result_array();
+					// $event_date = !empty($book_details[0]['event_date']) ? $book_details[0]['event_date'] : 0;
 
-					$duration = !empty($jsondata['duration']) ? $jsondata['duration'] : "";
-					$confirmemail = !empty($jsondata['confirmemail']) ? $jsondata['confirmemail'] : "";
-					//$role = !empty($performer_list['role']) ? $performer_list['role'] : "";
+					 $duration = !empty($jsondata['duration']) ? $jsondata['duration'] : "";
+					// $confirmemail = !empty($jsondata['confirmemail']) ? $jsondata['confirmemail'] : "";
+					$role = !empty($performer_list['role']) ? $performer_list['role'] : "";
  
-
-					$start_datetime = $event_date.' '.$assign_start_datetime;
-
-					if($duration == '1'){
-						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60);
-			    	}
-			    	else if($duration == '1.5'){
-						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*1.5);
-			    	}
-			    	else if($duration == '2'){
-						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*2);
-			    	}
-			    	else if($duration == '2.5'){
-						$assign_end_datetime = date('g:i A', strtotime($start_datetime) + 60*60*2.5);
-			    	}
-			    	else{
-			    		$assign_end_datetime = "";
-			    	}
-
-			    	$start_datetime = $event_date.' '.$assign_start_datetime;
-			    	$end_datetime = $event_date.' '.$assign_end_datetime;
-			$role = implode(",",array_unique($jsondata['role']));
-
-	    			$postData = array(
-						'booking_request_id'=> $booking_request_id,
-						'performer_id'=> $performer_id,
-						'assign_date'=>$event_date,
-						//'role'=>$counts,
-						'role'=>$role,
-						'assign_start_datetime'=>$assign_start_datetime,
-						'assign_end_datetime'=>$assign_end_datetime,
-						'start_datetime'=>$start_datetime,
-						'end_datetime'=>$end_datetime,
-						'duration'=>$duration,
-						'created_on'=>date('Y-m-d H:i:s'),
-						'updated_on'=>date('Y-m-d H:i:s')
-					);
-
-           //   var_dump($postData); die;
-			// $this->db->where('id',$id);
-   //  		$result = $this->db->update('assign_booking',$postData);
-
-    		$historyMessage = "Admin edited assign performer details";
-    		$resultHistory = $this->addHistory('Performer', 'Edit Assign', $historyMessage);
 
     		$assign_details = $this->db->query("SELECT * FROM assign_booking where id='$id'")->result_array();
 			$booking_request_id = !empty($assign_details[0]['booking_request_id']) ? $assign_details[0]['booking_request_id'] : "";
@@ -3832,12 +3891,14 @@ if(!empty($confirmemail)){
     		$email = !empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
     		
     		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
-    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
+    		//$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
     		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
-
-			$showTime = !empty($booking_details[0]['show_time']) ? date('g:i A', strtotime($booking_details[0]['show_time'])) : "";
-	    	$showTimes = !empty($assign_details[0]['start_datetime']) ? date('g:i A', strtotime($assign_details[0]['start_datetime'])) : "";
-	    		
+    		$party_address=!empty($booking_details[0]['party_address']) ? $booking_details[0]['party_address'] : "";
+			$fee=!empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
+			$email=!empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
+			$name=!empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
+			$duration=!empty($booking_details[0]['duration']) ? $booking_details[0]['duration'] : "";
+			
     		$categoryID = !empty($assign_details[0]['role']) ? $assign_details[0]['role'] : "";
 
     		$categoryDetails = !empty($categoryID) ? explode(',', $categoryID) : "";
@@ -3854,7 +3915,9 @@ if(!empty($confirmemail)){
 
     		// Start Performer Email
     		$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id' ")->result_array();
+    		$performer = !empty($performer_details[0]['name']) ? $performer_details[0]['name'] : "";
     		$to_email = !empty($performer_details[0]['email']) ? $performer_details[0]['email'] : "";
+    		
     		$booking_id = !empty($booking_request_id) ? base64_encode($booking_request_id) : "";
 			    		
 			$email_details = $this->db->query("SELECT * FROM email_templates where email_template_name='RE-SCHEDULE_BOOKING' ")->result_array();
@@ -3862,7 +3925,7 @@ if(!empty($confirmemail)){
 	        $subject = !empty($email_details[0]['email_template_subject']) ? $email_details[0]['email_template_subject'] : "";
 	        $message = !empty($email_details[0]['email_template_html']) ? $email_details[0]['email_template_html'] : "";
 	        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
-	        $data = array('SHOW_DATE' => $event_date, 'SHOW_TIME' => $showTimes, 'SHOW_START_TIME' => $showTimes, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept);
+	        $data = array('SHOW_DATE' => $showDate, 'SHOW_TIME' => $start_datetime, 'SHOW_START_TIME' => $start_datetime, 'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $show_type_text, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name, 'DURATION' => $duration , 'ACCEPT' => $accept,'PERFORMER_DETAILS'=>$performer);
 	        //$data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $start_time, 'SHOW_END_TIME' => $end_time,'SHOW_DETAILS'=>$show_type_text, 'SHOW_TYPE' => $showType);
 	        if(!empty($data)){
 	        	foreach($data as $key => $value){
@@ -4024,7 +4087,7 @@ if(!empty($confirmemail)){
 		    		$child_name= !empty($booking_details[0]['child_name']) ? $booking_details[0]['child_name'] : "";		    		
 		    		$fee= !empty($booking_details[0]['fee']) ? $booking_details[0]['fee'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 		    		$email= !empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
 
@@ -4065,7 +4128,7 @@ if(!empty($confirmemail)){
 				        $from_email = !empty($email_details[0]['email_from']) ? $email_details[0]['email_from'] : "";
 
 				        // $data = array('SHOW_DATE' => $showDate, 'SHOW_START_TIME' => $showTime, 'ADDRESS' => $party_address,'SHOW_DETAILS'=>$show_type_text,'SHOW_TYPE' => $showType);
-				        $data = array('SHOW_DATE' => $event_date,'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $role, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'SHOW_DETAILS'=>$show_type_text,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name,'DURATION' => $duration , 'ACCEPT' => $accept);
+				        $data = array('SHOW_DATE' => $event_date,'SHOW_TIME' => $show_time, 'SHOW_START_TIME' => $show_time, 'SHOW_TYPE' => $role, 'PARTY_ADDRESS' => $party_address,'CHILD_NAME' => $child_name,'CHARACTER' => $showType,'SHOW_DETAILS'=>$show_type_text,'FEE' => $fee,'EMAIL' => $email,'MOBILE' => $mobile,'AGE' => $age,'HOST' => $name,'DURATION' => $duration , 'ACCEPT' => $accept,'NAME'=>$name);
 				        if(!empty($data)){
 				        	foreach($data as $key => $value){
 
@@ -4150,7 +4213,7 @@ if(!empty($confirmemail)){
 		    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 		    		$party_address = !empty($booking_details[0]['party_address']) ? $booking_details[0]['party_address'] : "";
 		    		
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 		    		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 		    		$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -4260,7 +4323,7 @@ if(!empty($confirmemail)){
 		    		$name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 		    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 		    		
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+		//	$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 		    		$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 		    		$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -4364,7 +4427,7 @@ if(!empty($confirmemail)){
 
 					$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 					$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 					
 					$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -4479,7 +4542,7 @@ if(!empty($confirmemail)){
 			$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 			
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 			$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 			$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -4883,12 +4946,14 @@ if(!empty($confirmemail)){
     		$result = $this->db->update('booking_request',$postData);
 
     		$booking_details = $this->db->query("SELECT * FROM booking_request where id='$id';")->result_array();
-
+    		$temp['name'] = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
+    		$temp['showDate'] = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
+    		
     		$name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
     		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
     		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
     		
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
     		$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 
@@ -4933,7 +4998,8 @@ if(!empty($confirmemail)){
 		        $result_mail = $this->sendMail($from_email, $admin_email, $message, $subject);
     		}
     		// End Admin Email
-	    	
+	    	$temp['name']='this is working good test';
+	    	$response[]=$temp;
 	      	if(!empty($result)){
 	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Booking added successfully!", 'response' =>$response)); die;
 	      	}
@@ -4943,7 +5009,107 @@ if(!empty($confirmemail)){
     	}
   	}
 
+ public function infoBooking(){
 
+	    $this->checkLogin();  
+
+	    $jsondata =file_get_contents("php://input");
+	    $jsondata =json_decode($jsondata,true);
+
+	    $response = array();
+	    $temp = array();
+
+    	if(!empty($jsondata)){
+
+    		$booking_id = !empty($jsondata['id']) ? base64_decode($jsondata['id']) : "";
+    	
+	      	$bookingdetails = $this->db->query("SELECT * FROM booking_request where id='$booking_id';")->result_array();
+	      
+	      	if(!empty($bookingdetails)){
+		        foreach($bookingdetails  as $bookingdetail){
+
+		          
+		          	$temp['id'] = !empty($bookingdetail['id']) ? $bookingdetail['id'] : "";
+		          //	$booking_request_id = !empty($bookingdetail['booking_request_id']) ? $performer_list['booking_request_id'] : "";
+		          //	$performer_id = !empty($performer_list['performer_id']) ? $performer_list['performer_id'] : "";
+		          	$role = !empty($bookingdetail['name']) ? $bookingdetail['name'] : "";
+   
+
+		          	$perform_details = $this->db->query("SELECT * FROM performers where id='$performer_id';")->result_array();
+
+		        	$temp['name'] = !empty($bookingdetail['name']) ? $bookingdetail['name'] : '';
+		        	$temp['email'] = !empty($bookingdetail['email']) ? $bookingdetail['email'] : '';
+		        	$temp['duration'] = !empty($bookingdetail['duration']) ? $bookingdetail['duration'] : '';
+		        	$temp['show_time'] = !empty($bookingdetail['show_time']) ? $bookingdetail['show_time'] : '';
+		        	$temp['show_type_text'] = !empty($bookingdetail['show_type_text']) ? $bookingdetail['show_type_text'] : '';
+		        	$categoryID = !empty($bookingdetail['show_type']) ? $bookingdetail['show_type'] : "";
+
+    		$categoryDetails = !empty($categoryID) ? explode(',', $categoryID) : "";
+    		$showArray = array();
+    		if(!empty($categoryDetails)){
+    			foreach ($categoryDetails as $categoryList) {
+
+    				$category_details = $this->db->query("SELECT * FROM categories where id='$categoryList';")->result_array();
+    				$showArray[] = !empty($category_details[0]['category']) ? $category_details[0]['category'] : "";
+    			}
+    		}
+
+    		$showType = !empty($showArray) ? implode(',', $showArray) : "";
+
+		        	$temp['show_type'] = !empty($showType) ? $showType : '';
+		        	$temp['event_amount'] = !empty($bookingdetail['event_amount']) ? $bookingdetail['event_amount'] : '';
+		        	$temp['event_date'] = !empty($bookingdetail['event_date']) ? $bookingdetail['event_date'] : '';
+		        	
+		        	$temp['hear_supersteph'] = !empty($bookingdetail['hear_supersteph']) ? $bookingdetail['hear_supersteph'] : '';
+		        	$temp['party_bags'] = !empty($bookingdetail['party_bags']) ? $bookingdetail['party_bags'] : '';
+		        	$temp['party_address'] = !empty($bookingdetail['party_address']) ? $bookingdetail['party_address'] : '';
+		        	$temp['home_address'] = !empty($bookingdetail['home_address']) ? $bookingdetail['home_address'] : '';
+		        	$temp['parking_facility'] = !empty($bookingdetail['parking_facility']) ? $bookingdetail['parking_facility'] : '';
+		        	$temp['party_in_out'] = !empty($bookingdetail['party_in_out']) ? $bookingdetail['party_in_out'] : '';
+		        	$temp['rain_plan'] = !empty($bookingdetail['rain_plan']) ? $bookingdetail['rain_plan'] : '';
+		        	$temp['second_mobile'] = !empty($bookingdetail['second_mobile']) ? $bookingdetail['second_mobile'] : '';
+		        	$temp['child_name'] = !empty($bookingdetail['child_name']) ? $bookingdetail['child_name'] : '';
+		        	$temp['age'] = !empty($bookingdetail['age']) ? $bookingdetail['age'] : '';
+		        	$temp['dob'] = !empty($bookingdetail['dob']) ? $bookingdetail['dob'] : '';
+		        	$temp['children_party'] = !empty($bookingdetail['children_party']) ? $bookingdetail['children_party'] : '';
+		        	$temp['gender_party'] = !empty($bookingdetail['gender_party']) ? $bookingdetail['gender_party'] : '';
+		        	$temp['children_count'] = !empty($bookingdetail['children_count']) ? $bookingdetail['children_count'] : '';
+		        	$temp['party_seen'] = !empty($bookingdetail['party_seen']) ? $bookingdetail['party_seen'] : '';
+		        	$temp['show_fullname'] = !empty($bookingdetail['show_fullname']) ? $bookingdetail['show_fullname'] : '';
+		        	
+		            
+		        	// $temp['profile_image'] = !empty($perform_details[0]['profile_image']) ? GET_PERFORMER_IMAGE_PATH.$perform_details[0]['profile_image'] : GET_DUMMY_IMAGE_PATH.'dummy.png';
+
+		        	// $assign_details = $this->db->query("SELECT * FROM assign_booking where booking_request_id='$booking_request_id' and performer_id='$performer_id';")->result_array();
+		        	// $roles = $this->db->query("SELECT category FROM categories where id IN (".$assign_details[0]['role'].")")->result_array();
+		        	// $i=0;
+		        	// foreach ($roles as $roles_val) {
+		        	// 	$rval[$i]=$roles_val['category'];
+		        	// 	$i++;
+		        	// }
+		        	// $temp['status'] = !empty($assign_details[0]['status']) ? $assign_details[0]['status'] : "";		        	
+		        	// $temp['duration'] = !empty($assign_details[0]['duration']) ? $assign_details[0]['duration'] : "";
+		        	// $temp['role'] = implode(",",$rval);	        	
+		        	// $temp['reason'] = !empty($assign_details[0]['reason']) ? $assign_details[0]['reason'] : "-";
+		        	// $temp['date'] = !empty($assign_details[0]['assign_date']) ? date('d-m-Y', strtotime($assign_details[0]['assign_date'])) : "";
+		        	// $temp['start_time'] = !empty($assign_details[0]['assign_start_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_start_datetime'])) : "";
+		        	// $temp['end_time'] = !empty($assign_details[0]['assign_end_datetime']) ? date('h:i A', strtotime($assign_details[0]['assign_end_datetime'])) : "";
+
+		        	$temp['things test'] = "this is good things";
+
+		          	$response[] =$temp;
+		        }
+	      	}
+      
+	      	if(!empty($response)){
+	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "view Performer List!", 'response' =>$response)); die;
+	      	}
+	      	else{
+	        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Empty view Performer List!", 'response' =>$response)); die;
+	      	}
+	    }
+  	}
+    
 
   	public function lookingForwardMail(){
 
@@ -5908,14 +6074,16 @@ if(!empty($confirmemail)){
     			$upcomingFilter="";
     		}
     		$currentDate = date("Y-m-d"); // and event_date>='$currentDate'
+    		$tenday = date('Y-m-d', strtotime($currentDate . ' +10 day'));
+				//and event_date <='$tenday'
     		if(!empty($upcomingFilter)){
 
-			$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled' and event_date>='$currentDate' $upcomingFilter order by event_date ASC;")->result_array();
+			$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled' and event_date>='$currentDate' and event_date <='$tenday' $upcomingFilter order by event_date ASC;")->result_array();
 	        $total = !empty($booking_total[0]['total']) ? $booking_total[0]['total'] : 0;
 	}else {
 
 
-	      	$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where paperwork_count='0' and booking_status <> '	Cancelled'  and event_date>='$currentDate' order by event_date ASC;")->result_array();
+	      	$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where paperwork_count='0' and booking_status <> '	Cancelled'  and event_date>='$currentDate' and event_date <='$tenday' order by event_date ASC;")->result_array();
 	        $total = !empty($booking_total[0]['total']) ? $booking_total[0]['total'] : 0;
       }
 
@@ -5937,10 +6105,10 @@ if(!empty($confirmemail)){
       $currentDate = date("Y-m-d"); // and event_date>='$currentDate'
       		 if(!empty($upcomingFilter)){
 
-	      	$booking_details = $this->db->query("SELECT * FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled'   and event_date>='$currentDate' $upcomingFilter order by event_date desc $limitto;")->result_array();
+	      	$booking_details = $this->db->query("SELECT * FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled'   and event_date>='$currentDate' and event_date <='$tenday' $upcomingFilter order by event_date desc $limitto;")->result_array();
 	      	//echo '<script> alert("under condition")</script>';// die();
 	      }else{
-	      	$booking_details = $this->db->query("SELECT * FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled'  and event_date>='$currentDate' order by event_date desc $limitto;")->result_array();
+	      	$booking_details = $this->db->query("SELECT * FROM booking_request where paperwork_count='0' and booking_status <> 'Cancelled'  and event_date>='$currentDate' and event_date <='$tenday' order by event_date desc $limitto;")->result_array();
 	      //	echo '<script> alert("not  condition")</script>';//
 	      } 
 
@@ -5956,7 +6124,7 @@ if(!empty($confirmemail)){
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date('h:i A', strtotime($booking_list['show_end_time'])) : "";
 
 		          	$temp['event_amount'] = !empty($booking_list['event_amount']) ? $booking_list['event_amount'] : "";
@@ -6140,14 +6308,16 @@ if(!empty($booking_details)){
 
 
 $currentDate = date("Y-m-d");//event_date>='$currentDate'
+$tenday = date('Y-m-d', strtotime($currentDate . ' +10 day'));
+				//and event_date <='$tenday'
 if(!empty($upcomingFilter)){
 
-			$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where looking_count='0' and booking_status <> 'Cancelled'  $upcomingFilter;")->result_array();
+			$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where looking_count='0' and booking_status <> 'Cancelled' and event_date <='$tenday' $upcomingFilter;")->result_array();
 	        $total = !empty($booking_total[0]['total']) ? $booking_total[0]['total'] : 0;
 	}else {
 
 
-	      	$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where event_date>='$currentDate' and booking_status <> 'Cancelled'  and looking_count='0' ;")->result_array();
+	      	$booking_total= $this->db->query("SELECT count(*) as total FROM booking_request where event_date>='$currentDate' and booking_status <> 'Cancelled'  and event_date <='$tenday' and looking_count='0' ;")->result_array();
 	        $total = !empty($booking_total[0]['total']) ? $booking_total[0]['total'] : 0;
       }
       		//Pagination Start
@@ -6164,10 +6334,10 @@ if(!empty($upcomingFilter)){
 	      	//Pagination end
       if(!empty($upcomingFilter)){
 
-	      	$booking_details = $this->db->query("SELECT * FROM booking_request where looking_count='0' and booking_status <> 'Cancelled' $upcomingFilter order by event_date ASC $limitto;")->result_array();
+	      	$booking_details = $this->db->query("SELECT * FROM booking_request where looking_count='0' and booking_status <> 'Cancelled' and event_date <='$tenday' $upcomingFilter order by event_date ASC $limitto;")->result_array();
 	      	//echo '<script> alert("under condition")</script>';// die();
 	      }else{
-	      	$booking_details = $this->db->query("SELECT * FROM booking_request where event_date>='$currentDate' and booking_status <> 'Cancelled'  and looking_count='0' order by event_date ASC $limitto;")->result_array();
+	      	$booking_details = $this->db->query("SELECT * FROM booking_request where event_date>='$currentDate' and booking_status <> 'Cancelled'  and looking_count='0' and event_date <='$tenday' order by event_date ASC $limitto;")->result_array();
 	      //	echo '<script> alert("not  condition")</script>';//
 	      } 
 
@@ -6181,7 +6351,8 @@ if(!empty($upcomingFilter)){
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+		          	//$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date('h:i A', strtotime($booking_list['show_end_time'])) : "";
 
 		          	$temp['event_amount'] = !empty($booking_list['event_amount']) ? $booking_list['event_amount'] : "";
@@ -6515,9 +6686,10 @@ if(!empty($booking_details)){
 
 					$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 					$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-					$show_time = date('h:i A', strtotime($show_time));
+					//$show_time = date('h:i A', strtotime($show_time));
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			$showTime = !empty($booking_details[0]['show_time']) ?$booking_details[0]['show_time'] : "";
+	    	//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 					$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 					$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -6615,7 +6787,7 @@ if(!empty($booking_details)){
 					$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 					$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 					
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 					$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 
@@ -6743,7 +6915,9 @@ if(!empty($booking_details)){
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+		          	//$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date('h:i A', strtotime($booking_list['show_end_time'])) : "";
 
 		          	$temp['event_amount'] = !empty($booking_list['event_amount']) ? $booking_list['event_amount'] : "";
@@ -6865,7 +7039,8 @@ $this->checkLogin();
     	if(!empty($jsondata)){
     		$filter = !empty($jsondata['filter']) ? $jsondata['filter'] : "";
     		$searchdata = !empty($jsondata['searchtype']) ? $jsondata['searchtype'] : "";
-    		$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
+    		$startDate = !empty($jsondata['start_date']) ? $jsondata['start_date'] : "";
+    		//$startDate = !empty($jsondata['start_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['start_date'])) : "";
     		$endDate = !empty($jsondata['end_date']) ? date('Y-m-d H:i:s', strtotime($jsondata['end_date'])) : "";
 
     		if($filter == '1'){
@@ -6933,10 +7108,38 @@ $this->checkLogin();
 		          	$temp['mobile_number'] = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		          	
 		          	$temp['event_date'] = !empty($booking_list['event_date']) ? date('d-m-Y', strtotime($booking_list['event_date'])) : "";
-		          	$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	//$temp['show_time'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          		$temp['show_time'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
 		          	$temp['show_end_time'] = !empty($booking_list['show_end_time']) ? date('h:i A', strtotime($booking_list['show_end_time'])) : "";
 
 		          	$temp['event_amount'] = !empty($booking_list['event_amount']) ? $booking_list['event_amount'] : "";
+
+		          	$feedback = "";
+					$newline = '
+					';
+					$comma=',';
+					$id=$booking_list['id'];
+					$feedback_details = $this->db->query("SELECT * FROM feedback where booking_id='$id' ")->result_array();
+					//and ( rating='Best party ever- the show buzzed!!' or rating='Great party!' )
+					if(!empty($feedback_details)){
+						foreach ($feedback_details as $feedbackList) {
+							$performer_id = !empty($feedbackList['performer_id']) ? $feedbackList['performer_id'] : "";
+
+							//$performer_details = $this->db->query("SELECT * FROM performers where id='$performer_id' ")->result_array();
+							$performer_name = !empty($feedbackList['performer_name']) ? $feedbackList['performer_name'] : "";
+
+							$goodpoint = !empty($feedbackList['good_points']) ? $feedbackList['good_points'] : "";
+							$badpoint = !empty($feedbackList['bad_points']) ? $feedbackList['bad_points'] : "";
+							$rating = !empty($feedbackList['rating']) ? $feedbackList['rating'] : "";
+							 $feedback.='Performer Name        : '.$performer_name.$comma;
+							 $feedback.='Good Points           :'.$goodpoint.$comma;
+							 $feedback.='Bad point : '.$badpoint.$comma;
+							 $feedback.='Rating      : '.$rating.$comma;
+							 $feedback.=$newline ;
+							// $performer_message.='Performer mobile: '.$performer_mobile.'   ';
+						}
+					}
+					$temp['feedbacks']= $feedback;
 
 		          	$show_type = !empty($booking_list['show_type']) ? $booking_list['show_type'] : "";
 					$show_type_details = explode(",",$show_type);
@@ -7093,18 +7296,13 @@ $this->checkLogin();
 						}
 			       	}
 
-			       	// Start Customer Email
 			       	$customer_email = !empty($booking_details[0]['email']) ? $booking_details[0]['email'] : "";
 
 			 	 	$result_mail = $this->sendMail($from_email, $customer_email, $message, $subject);
-			 	 	// End Customer Email
-
-			 	 	// Start Admin History
+			 	 	
 					$historyMessage = "Admin sent mail to ".$name." booking request details";
 					$resultHistory = $this->addHistory('Booking Request', 'Looking Forward mail', $historyMessage);
-					// End Admin History
-
-					// Start Performer Email
+					
 			       	$assign_details = $this->db->query("SELECT * FROM assign_booking where booking_request_id='$id' and status='Accept' ")->result_array();
 					if(!empty($assign_details)){
 						foreach ($assign_details as $assignList) {
@@ -7117,18 +7315,15 @@ $this->checkLogin();
 							$result_mail_performer = $this->sendMail($from_email, $performer_email, $message, $subject);
 						}
 					}
-			 	 	// End Performer Email
-
-			 	 	// Start Admin Email
 					$admin_details = $this->db->query("SELECT * FROM admin;")->result_array();
 					$admin_email = !empty($admin_details[0]['email']) ? $admin_details[0]['email'] : "";
 
 					if(!empty($admin_email)){
 				        $result_mail = $this->sendMail($from_email, $admin_email, $message, $subject);
-
+					$updatebookingrequest = $this->db->query("UPDATE `booking_request` SET thankyou_count='1' WHERE `id`='$id'");   
+		        	
 					}
-					// End Admin Email
-
+					
 	    		}
 
 		      	if(!empty($result_mail)){
@@ -7518,9 +7713,15 @@ $this->checkLogin();
 	      	else{
 	        	$searchdata = "";
 	      	}
+	      	if(!empty($jsondata['searchtypebp'])){
+	        	$searchdatas = $jsondata['searchtypebp'];
+	  		} 
+	      	else{
+	        	$searchdatas = "";
+	      	}
 
 	      	if(!empty($searchdata)){
-		        $feedback_total = $this->db->query("SELECT count(*) as total FROM feedback where (rating like '%$searchdata%');")->result_array();
+		        $feedback_total = $this->db->query("SELECT count(*) as total FROM feedback where (rating like '%$searchdata%') or (good_points like '%$searchdata%') or (bad_points like '%$searchdata%') or (booking_name like '%$searchdata%') or (performer_name like '%$searchdata%');")->result_array();
 		        $total = !empty($feedback_total[0]['total']) ? $feedback_total[0]['total'] : 0;
 	      	}
 	      	else{
@@ -7541,20 +7742,21 @@ $this->checkLogin();
 	      	$limitto = 'limit '.($page - 1) * $limit.','.$limit;
 	      	//Pagination end
       
-	      	$feedback_details = $this->db->query("SELECT * FROM feedback where (rating like '%$searchdata%') order by id desc $limitto;")->result_array();
+	      	$feedback_details = $this->db->query("SELECT * FROM feedback where (rating like '%$searchdata%') or (good_points like '%$searchdata%') or (bad_points like '%$searchdata%') or (booking_name like '%$searchdata%') or (performer_name like '%$searchdata%') order by id desc $limitto;")->result_array();
 	      
 	      	if(!empty($feedback_details)){
 		        foreach($feedback_details  as $feedback_list){
 		          
 		          	$temp['id'] = !empty($feedback_list['id']) ? $feedback_list['id'] : "";
 		          	$booking_id = !empty($feedback_list['booking_id']) ? $feedback_list['booking_id'] : "";
-
-		          	$booking_total = $this->db->query("SELECT * FROM booking_request where id= '$booking_id' ;")->result_array();
+				
+		          	$booking_total = $this->db->query("SELECT * FROM booking_request where id= '$booking_id'  ;")->result_array();
 		        	$temp['booking_name'] = !empty($booking_total[0]['name']) ? $booking_total[0]['name'] : 0;
 
 		        	$performer_id = !empty($feedback_list['performer_id']) ? $feedback_list['performer_id'] : "";
-
+		 
 		        	$performer_total = $this->db->query("SELECT * FROM performers where id= '$performer_id';")->result_array();
+
 		        	$temp['performer_name'] = !empty($performer_total[0]['name']) ? $performer_total[0]['name'] : 0;
 
 		          	$temp['good_points'] = !empty($feedback_list['good_points']) ? $feedback_list['good_points'] : "";
@@ -7596,7 +7798,7 @@ $this->checkLogin();
 
 			$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 			$host = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 			$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
@@ -7678,8 +7880,8 @@ $this->checkLogin();
 		          	$temp['id'] = !empty($booking_list['id']) ? $booking_list['id'] : "";
 		          	$temp['booking_name'] = !empty($booking_list['name']) ? $booking_list['name'] : "";
 		          	$temp['showDate'] = !empty($booking_list['event_date']) ? $booking_list['event_date'] : "";
-		          	//$temp['showTime'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
-		          	$temp['showTime'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
+		          	$temp['showTime'] = !empty($booking_list['show_time']) ? $booking_list['show_time'] : "";
+		          	//$temp['showTime'] = !empty($booking_list['show_time']) ? date('h:i A', strtotime($booking_list['show_time'])) : "";
 	    			$temp['show_type_text'] = !empty($booking_list['show_type_text']) ? $booking_list['show_type_text'] : "";
 		          
 		          	$temp['showType'] = !empty($booking_list['show_type']) ? $booking_list['show_type'] : "";
@@ -7699,9 +7901,9 @@ $this->checkLogin();
 		          	$temp['child_name'] = !empty($booking_list['child_name']) ? $booking_list['child_name'] : "";
 		          	
 		          	$response[] =$temp;
-	        	}
+	        	} 
 	      	}
-      
+       
 	      	if(!empty($response)){
 	        	echo json_encode(array('status'=>0, 'type'=>'success', "message" => "Feedback Booking Form!", 'response' =>$response)); die;
 	      	}
@@ -7731,10 +7933,15 @@ $this->checkLogin();
 	    	
 	    	$feedback_details = $this->db->query("SELECT count(*) as total FROM feedback where booking_id='$booking_id' and performer_id='$performer_id';")->result_array();
 	    	$total = !empty($feedback_details[0]['total']) ? $feedback_details[0]['total'] : "";
-
+	    	$bookingrequest=$this->db->query("SELECT name FROM booking_request where id='$booking_id';")->result_array();
+	    	$booking_name=$bookingrequest[0]['name'];
+	    	$performers=$this->db->query("SELECT name FROM performers where id='$performer_id';")->result_array();
+	    	$performer_name=$performers[0]['name'];
 	    	if($total == 0){
 
 	    		$postData = array(
+	    			'booking_name'=>$booking_name,
+	    			'performer_name'=>$performer_name,
 					'booking_id'=> $booking_id,
 					'performer_id'=> $performer_id,
 					'good_points'=> $good_points,
@@ -7764,14 +7971,15 @@ if($result){
 	    		$name = !empty($booking_details[0]['name']) ? $booking_details[0]['name'] : "";
 	    		$showDate = !empty($booking_details[0]['event_date']) ? $booking_details[0]['event_date'] : "";
 	    		$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
-	    		$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    		//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
 	    		
 	    		$showType = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 	    		$child_name = !empty($booking_details[0]['child_name']) ? $booking_details[0]['child_name'] : "";
 				$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
 	    		
-				$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
-	    		$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
+				$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
+	    	//	$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	    $categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 				$categoryDetails = !empty($categoryID) ? explode(',', $categoryID) : "";
 				$showArray = array();
 				if(!empty($categoryDetails)){
@@ -7886,7 +8094,8 @@ if($result){
 	  				$to_email = !empty($bookingList['email']) ? $bookingList['email'] : "";
 	  				$showDate = !empty($bookingList['event_date']) ? $bookingList['event_date'] : "";
 	  				$showTime = !empty($bookingList['show_time']) ? $bookingList['show_time'] : "";
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    			$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 
 	  				$categoryID = !empty($bookingList['show_type']) ? $bookingList['show_type'] : "";
@@ -8057,7 +8266,8 @@ if($result){
 	  				$showDate = !empty($bookingList['event_date']) ? $bookingList['event_date'] : "";
 	  				$showTime = !empty($bookingList['show_time']) ? $bookingList['show_time'] : "";
 
-			$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+			//$showTime = !empty($booking_details[0]['show_time']) ? date('h:i A', strtotime($booking_details[0]['show_time'])) : "";
+	    	$showTime = !empty($booking_details[0]['show_time']) ? $booking_details[0]['show_time'] : "";
 	    		
 	  				$categoryID = !empty($bookingList['show_type']) ? $bookingList['show_type'] : "";
 
@@ -9677,6 +9887,7 @@ $performer_message = "";
     	$mobile_number = !empty($booking_details[0]['mobile_number']) ? $booking_details[0]['mobile_number'] : "";
     	$second_mobile = !empty($booking_details[0]['second_mobile']) ? $booking_details[0]['second_mobile'] : "";
     	$show_type_text = !empty($booking_details[0]['show_type_text']) ? $booking_details[0]['show_type_text'] : "";
+    	$notes = !empty($booking_details[0]['notes']) ? $booking_details[0]['notes'] : "";
 
     	$categoryID = !empty($booking_details[0]['show_type']) ? $booking_details[0]['show_type'] : "";
 
@@ -9760,7 +9971,8 @@ Boys, girls or mixed party:'.$gender_party.'\par
 Has your child Seen my show before:'.$party_seen.'\par
 Mobile Number:\highlight3 '.$mobile_number.' \highlight0\par
 \highlight0 2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par
-\par
+
+Admin Notes:\highlight3 '.$notes.' \highlight0\par
 }';
 		echo $html;
 		exit();
@@ -10017,6 +10229,7 @@ $jonty=1;
 		    	$mobile_number = !empty($booking_list['mobile_number']) ? $booking_list['mobile_number'] : "";
 		    	$second_mobile = !empty($booking_list['second_mobile']) ? $booking_list['second_mobile'] : "";
 				$parking_facility = !empty($booking_list['parking_facility']) ? $booking_list['parking_facility'] : "";
+				$notes = !empty($booking_list['notes']) ? $booking_list['notes'] : "";
 
 		    	//parking_facility
 		    	$categoryID = !empty($booking_list['show_type']) ? $booking_list['show_type'] : "";
@@ -10090,7 +10303,8 @@ Main Age of children at the party:'.$children_party.'\par
 Boys, girls or mixed party:'.$gender_party.'\par
 Has your child Seen my show before:'.$party_seen.'\par
 Mobile Number:\highlight3 '.$mobile_number.' \highlight0\par
-2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par\page
+2nd Mobile Number (required):\highlight3 '.$second_mobile.' \highlight0\par
+Admin Notes:\highlight3 '.$notes.' \highlight0\par\page
 ';				
 	    	}
 $html.='}';
@@ -10180,7 +10394,7 @@ $html.='}';
 	        	echo json_encode(array('status'=>1, 'type'=>'error', "message" => "Empty History List!", 'response' =>$response)); die;
 	      	}
 	    }
-  	}
+  	}  
 
  
  	public function logout(){

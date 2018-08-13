@@ -74,7 +74,7 @@ app.controller("ChasingPaperworkController", function($scope, $http, toaster, $l
 					toaster.pop("success", data.message, "");
 					$scope.delete_count = 0;
 					$window.location.href = base_url+'welcome/chasingPaperwork';
-				}
+			}
 				else{
 					toaster.pop("error", data.message, "");
 				}
@@ -90,12 +90,14 @@ $scope.ignoreassignEmail = function(){
 			$http.post('ignorePaperworkEmail', $scope.get).success(function(data){
 				$scope.result = data;
 				if(data.status == 1){
-					toaster.pop("success", data.message, "");
+					toaster.pop("success", data.message, "Booking ignored");
 					$scope.delete_count = 0;
 					$window.location.href = base_url+'welcome/chasingPaperwork';
-				}
+			}
 				 else{
-				 	toaster.pop("error", data.message, "");
+				 	toaster.pop("success", data.message, "Booking ignored");
+				 	$window.location.href = base_url+'welcome/chasingPaperwork';
+			
 				 }
 			});
 		}

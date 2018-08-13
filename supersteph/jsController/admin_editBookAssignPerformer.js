@@ -28,7 +28,7 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 
 	$scope.hstep = 1;
   	$scope.mstep = 1;
-  	$scope.ismeridian = true;
+  	//$scope.ismeridian = true;
 
   	$scope.durationListing=[];
 	
@@ -140,10 +140,16 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 			}
 		});
 	}
+	 $scope.isDisabled = false;
+    $scope.disableClick = function() {
+        // alert("Clicked!");
+        $scope.isDisabled = true;
+        return false;
+    }
 
 	$scope.editBookAssignPerformer = function(list){
 		//console.log(list); 
-
+$scope.isDisabled = true;
 		//if($scope.listingPerformer.length > 1){
 
 			//if(confirm("Do you want to assign performar?")){
@@ -151,9 +157,9 @@ app.controller("editBookAssignPerformerController", function($scope, $http, toas
 					$scope.result = data;
 					if(data.status == 0){
 						toaster.pop("success", data.message, "");
-						// $timeout(function() {  
-		    //               	$window.location.href = base_url+'welcome/editbookingRequest/?'+id+'/?'+page_id; 
-		    //             }, 900); 
+						$timeout(function() {  
+		                  	$window.location.href = base_url+'welcome/editbookingRequest/?'+id+'/?'+page_id; 
+		                }, 900); 
 					}
 					else{
 						toaster.pop("error", data.message, "");

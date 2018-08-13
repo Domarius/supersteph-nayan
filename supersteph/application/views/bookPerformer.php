@@ -192,8 +192,10 @@
                  <!--  <div class="col-sm-1">
                   </div> -->
                   <div class="col-sm-3">
-                    <div uib-timepicker ng-model="list.start_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                  </div>
+                   <input  type="text" name="list.start_time" ng-model="list.start_time" class="form-control" placeholder="Show Time">
+                      
+                  <!--   <div uib-timepicker ng-model="list.start_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                 -->  </div>
                <!--    <div class="col-sm-1">
                   </div> -->
                   <div class="col-sm-2">
@@ -221,7 +223,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="assignPerformer()">Save</button>
+                <button type="button"  ng-disabled="isDisabled" ng-model="isDisabled" class="btn btn-primary" ng-click="assignPerformer(); disableClick();">Save</button>
               </div>
             </div>
           

@@ -38,7 +38,7 @@
 	                    	<a href="<?php echo base_url() ?>welcome/editemailTemplate/?15" class="btn btn-success"> Edit Template </a>
 	                 <!--  ng-if="delete_count > 0" -->
 	                      		<button type="button" class="btn btn-primary"  ng-click="assignEmail();">Send</button>
-	                      		
+	                      		<button type="button" class="btn btn-primary"  ng-click="ignoreassignEmail();">Ignore</button> 
 	                    	</div>
 	                  	</div>
 	                  	<div class="box-body">

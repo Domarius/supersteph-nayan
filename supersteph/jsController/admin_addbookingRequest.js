@@ -18,7 +18,7 @@ app.controller("addBookingRequestController", function($scope, $http, toaster, $
 			$scope.categoryListing=data.response;
 		});
 	}
-
+	
 	$scope.durationListing=[
 		{"label":"15 Min", "value":"15 Min"},
 		{"label":"30 Min", "value":"30 Min"},
@@ -48,25 +48,32 @@ app.controller("addBookingRequestController", function($scope, $http, toaster, $
 	];
 
 	//Start Timepicker
-	$scope.get.show_time = new Date();
+	//$scope.get.show_time = new Date();
 	$scope.hstep = 1;
   	$scope.mstep = 1;
-  	$scope.ismeridian = true;
+  	//$scope.ismeridian = true;
 	//End Timepicker
 
 	//Start Datepicker
 	$scope.myDate = new Date();
 	//End Datepicker
-
+	$scope.clear = function($event) {
+	   $event.stopPropagation(); 
+	   $scope.country.selected = undefined;
+	};
+	
 	$scope.addBookingRequest = function(){
 		
 		$http.post('addbookingRequest', $scope.get).success(function(data){
 			$scope.listing=data;
+
 			if(data.status == 0){
+				console.log(data);				
+				console.log('Bookin id = '+data.booking_id);
 				$scope.get = "";
 				toaster.pop("success", data.message, "");
 				$timeout(function() {  
-                  	$window.location.href = base_url+'welcome/bookingRequest/'+$scope.get.booking_id;  
+                  	$window.location.href = base_url+'welcome/bookPerformer/?' + data.booking_id +'/?1';  
                 }, 900);  
 			}
 			else{

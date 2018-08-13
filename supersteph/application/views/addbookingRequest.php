@@ -112,7 +112,7 @@
                   <div class="col-md-12">
                     <div class="col-md-2">
                       <div class="form-group">
-                        <label>Address</label>
+                        <label>Suburb</label>
                       </div>
                     </div>
 
@@ -211,8 +211,9 @@
                     <div class="col-md-5">
                       <div class="form-group">
                         <!-- <input ps-input-time sy-timepicker-popup="HH:mm" class="form-control" ng-model="get.show_time" show-meridian="false" is-open="opened1" /> -->
-                        <div uib-timepicker ng-model="get.show_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                      </div>
+                        <input  type="text" name="show_time" ng-model="get.show_time" class="form-control" placeholder="Show Time">
+                       <!--  <div uib-timepicker ng-model="get.show_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                   -->    </div>
                     </div>
                   </div>
 
@@ -237,6 +238,39 @@
                     </div>
                   </div>
 
+
+ <div class="col-md-12">
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Notes</label>
+                       </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                      <textarea  name="notes" class="form-control" placeholder="Admin Notes" ng-model="get.notes" required> </textarea>
+                       </div>
+                    </div>
+                  </div>
+
+
+
+
+
+   <!--     <div class="col-md-12">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Notes</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <textarea  name="notes" class="form-control" placeholder="Admin Notes" ng-model="get.notes" required> </textarea>
+                      </div>
+                    </div>
+                  </div>
+ -->
                   <div class="col-md-12">
                     <div class="col-md-2">
                       <div class="form-group">

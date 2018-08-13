@@ -73,24 +73,28 @@
               
               <form name="editStep" >
 <div class="col-md-10">
-                      <div class="form-group">
+                      <div class="form-group">  
                         <a href="<?php echo base_url() ?>welcome/bookingRequest/?{{parameters.page}}">
                           <button type="button" class="btn btn-warning">Back</button>
                         </a>
-
+                         <a href="<?php echo base_url() ?>welcome/generalAddBooking/?{{get.encripted_id}}">
+                        <!--  {{get.url_paperwork}}{{get.encripted_id}} -->
+                          <button type="button" class="btn btn-warning"> Paperwork detail</button>
+                        </a>
                         <button type="submit" ng-disabled="isDisabled" ng-model="isDisabled" class="btn btn-success" ng-click="editBookingRequest(); disableClick();"  id="btn1" >Save</button>
                          <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal" ng-click="BookingID(get.id)">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i> Cancel
+                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                           </a>
 
                         <div style="margin-bottom: 5px;" ng-if="list.booking_status == 'Cancelled'">
                           <button type="button" class="btn btn-sm btn-info" ng-click="reactive(list.id);">Re-Active</button>
-                        </div>
+                        </div> 
                         <!-- {{get.paid_amount}} --><!-- 
                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#paidAmountModal" ng-click="PaidID(get.id, get.event_amount, get.remain_amount)">Pay Amount</button> -->
                       
                      <!--  <label>Pay Fee</label> <input type="text"  name="pay_amount" class="form-control" placeholder="Pay Fee" ng-model="get.pay_amount" style="width: 70px; float: right; margin-right: 10%;"> -->
                       <input type="checkbox" ng-model="get.email_confirm" style="margin-left:20px"> <strong>Send customer Email </strong>
+                      <input type="checkbox" ng-model="get.email_paperwork" style="margin-left:20px"> <strong>Send Paperwork Email </strong>
                       </div>
                       <div class="col-md-12">
                     
@@ -157,6 +161,9 @@
                     <div class="col-md-5">
                       <div class="form-group">
                         <input type="text"  name="email" class="form-control" placeholder="Email" ng-model="get.email" required>
+                       <!--  <input type="text"  name="email" class="form-control" placeholder="Email" ng-model="get.encripted_id" required>
+                      <input type="text"  name="email" class="form-control" placeholder="Email" ng-model="get.url_paperwork" required>
+                       -->
                       </div>
                     </div>
                   </div>
@@ -262,8 +269,9 @@
                     <div class="col-md-8">
                       <div class="form-group">
                         <!-- <input ps-input-time sy-timepicker-popup="HH:mm" class="form-control" ng-model="get.show_time" show-meridian="false" is-open="opened1" /> -->
-                        <div uib-timepicker ng-model="get.show_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-                      </div>
+                         <input type="text"  name="show_time" class="form-control" placeholder="Show Type" ng-model="get.show_time" required>
+                       <!--  <div uib-timepicker ng-model="get.show_time" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+                    -->   </div>
                     </div>
                   </div>
 
@@ -272,7 +280,7 @@
                       <div class="form-group">
                         <label>Duration</label>
                       </div>
-                    </div>
+                    </div> 
 
                     <div class="col-md-9">
                       <div class="form-group">
@@ -285,10 +293,27 @@
                           </ui-select-choices>
                         </ui-select>
                       </div>
-                    </div>
+                    </div> 
                   </div>
 
                   <div class="col-md-12">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Notes</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group"><!-- 
+                        <input type="text"  name="notes" class="form-control" placeholder="Admin Notes" ng-model="get.notes" > -->
+                        <textarea  name="notes" class="form-control" placeholder="Admin Notes" ng-model="get.notes" required> </textarea>
+                     
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- <div class="col-md-12">
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Where did you hear of SuperSteph?</label>
@@ -511,7 +536,7 @@
                       </div>
                     </div>
                   </div>
-
+ -->
                   <div class="col-md-12">
                     <div class="col-md-4">
                       <div class="form-group">
@@ -590,8 +615,7 @@
                       </div>
                                     </td> -->
                                     <td>{{list.start_time}}</td>
-                                   <!--  <td>{{list.end_time}}</td> -->
-                                    <td>{{list.duration}} 
+                                    <td>{{list.duration}} hour
                      <!--  <select ng-model="list.duration">
                         <option ng-repeat="x in durationListing" value="{{x.value}}">{{x.label}}</option>
                       </select> -->
@@ -698,7 +722,7 @@
                 <div class="row">
                   <div class="col-sm-3">
                     <label>Event Amount</label>
-                  </div>9023100160
+                  </div>
                   <div class="col-sm-7">
                     <input type="text" name="event_amount" class="form-control" placeholder="Event Amount" ng-model="event_amount" readonly="">
                   </div>

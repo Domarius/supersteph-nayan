@@ -24,6 +24,7 @@ app.controller("feedbackController", function($scope, $http, toaster, $location,
 		$scope.parameters.page=1;
 		get_feedback();
     };
+   
 
     function update(total){
     	

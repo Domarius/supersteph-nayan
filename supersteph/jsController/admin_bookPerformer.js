@@ -126,6 +126,7 @@ app.controller("BookPerformerController", function($scope, $http, toaster, $loca
 
 	$scope.assignPerformerName = function(){
 		
+//$scope.isDisabled = true;
 		$http.post('../assignPerformerName', {'performer_id': $scope.SelectID, 'booking_id': id}).success(function(data){
 			$scope.listingPerformer = data.response;
 		});
@@ -173,9 +174,18 @@ app.controller("BookPerformerController", function($scope, $http, toaster, $loca
 
     $scope.hstep = 1;
   	$scope.mstep = 1;
-  	$scope.ismeridian = true;
+  	//$scope.ismeridian = true;
+ $scope.isDisabled = false;
+    $scope.disableClick = function() {
+        // alert("Clicked!");
+        $scope.isDisabled = true;
+        return false;
+    }
+
 
 	$scope.assignPerformer = function(){
+
+$scope.isDisabled = true;
 		//if(confirm("Do you want to assign performar?")){
 			$http.post('../bookPerformer', {'performer_id': $scope.listingPerformer, 'booking_request_id': id}).success(function(data){
 				$scope.result = data;
@@ -188,6 +198,9 @@ app.controller("BookPerformerController", function($scope, $http, toaster, $loca
 				}
 				else{
 					toaster.pop("error", data.message, "");
+					$timeout(function() {  
+	                  	$window.location.href = base_url+'welcome/bookPerformer/?'+id+'/?'+page_id; 
+	                }, 900); 
 				}
 			});
 	//	}

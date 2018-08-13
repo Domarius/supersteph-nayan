@@ -74,7 +74,28 @@ app.controller("ChasingPaymentController", function($scope, $http, toaster, $loc
 			});
 		}
     };
+// Ignore Clients
+$scope.ignoreassignEmail = function(){
+		if(confirm("Do you want to Ignore clients?")){
+			$scope.get.booking_id= $scope.SelectID;
+			$http.post('ignorePaymentEmail', $scope.get).success(function(data){
+				$scope.result = data;
+				if(data.status == 1){
+					toaster.pop("success", data.message, "Booking ignored");
+					$scope.delete_count = 0;
+					$window.location.href = base_url+'welcome/chasingPaperwork';
+			}
+				 else{
+				 	toaster.pop("success", data.message, "Booking ignored");
+				 	$window.location.href = base_url+'welcome/chasingPaperwork';
+			
+				 }
+			});
+		}
+    };
 
+
+// Ignore Clients 
 	
     function update(total){
     	
