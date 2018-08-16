@@ -150,13 +150,26 @@
                       <div class="form-group"> 
                         <ui-select multiple data-ng-model="get.show_type" theme="bootstrap" required>
                           <ui-select-match placeholder="Please Select Category.." ng-cloak>{{$item.category_name}}</ui-select-match>
-                          <ui-select-choices repeat="type.id as type in categoryListing |   propsFilter: {category_name: $select.search}">
+                          <ui-select-choices  repeat="type.id as type in categoryListing |   propsFilter: {category_name: $select.search}" refresh="DemoService.refreshAddresses($select.search,$http,$scope)"
+                refresh-delay="0" minimum-input-length="4">
                           <small>
                             {{type.category_name}}
                           </small>
+                          
                           </ui-select-choices>
                         </ui-select>
-                      </div>
+
+<!--  rakesh-->
+<!--  
+<ui-select multiple ng-model="get.show_type" theme="bootstrap" ng-disabled="ctrl.disabled" close-on-select="false" style="width: 300px;" title="Please Select Category.">
+    <ui-select-match placeholder="Select colors...">{{$item.category_name}}</ui-select-match>
+    <ui-select-choices repeat="type.id as type in categoryListing |   propsFilter: {category_name: $select.search}">
+      {{type.category_name}}
+    </ui-select-choices>
+  </ui-select> -->
+<!--  Rakesh 2 -->
+
+                      </div>  
                     </div>
                   </div> 
                   <div class="col-md-12">
@@ -288,7 +301,7 @@
                       </div>
                     </div>
                   </div>
-
+ 
                 </div>
 
               </form>

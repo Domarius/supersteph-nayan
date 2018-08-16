@@ -18,7 +18,7 @@ app.controller("addBookingRequestController", function($scope, $http, toaster, $
 			$scope.categoryListing=data.response;
 		});
 	}
-	
+
 	$scope.durationListing=[
 		{"label":"15 Min", "value":"15 Min"},
 		{"label":"30 Min", "value":"30 Min"},
@@ -57,11 +57,7 @@ app.controller("addBookingRequestController", function($scope, $http, toaster, $
 	//Start Datepicker
 	$scope.myDate = new Date();
 	//End Datepicker
-	$scope.clear = function($event) {
-	   $event.stopPropagation(); 
-	   $scope.country.selected = undefined;
-	};
-	
+
 	$scope.addBookingRequest = function(){
 		
 		$http.post('addbookingRequest', $scope.get).success(function(data){
